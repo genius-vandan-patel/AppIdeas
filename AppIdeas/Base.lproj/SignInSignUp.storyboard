@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LandingVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LandingVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="fPR-Ne-TUi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6V-jR-Eke">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5xG-bV-h5F">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fMJ-Wf-ubg">
+                                <rect key="frame" x="149" y="572" width="210" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LM-Qu-a4s" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="75"/>
+                                        <color key="backgroundColor" red="0.37519541382789612" green="0.25191494822502136" blue="0.86281400918960571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="4RA-KS-6eq"/>
+                                            <constraint firstAttribute="height" constant="75" id="lyg-FA-nnm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="SIGN IN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="0CH-is-FG0" kind="custom" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="v2n-5J-miZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeG-TU-jCR" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="0.0" width="100" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="YLX-Ia-ZUx"/>
+                                            <constraint firstAttribute="height" constant="75" id="aJu-P5-joB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="SIGN UP">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="ysb-RG-PVm" kind="custom" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="30Y-CM-hX0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="C6V-jR-Eke" secondAttribute="trailing" id="3Ly-tw-JJn"/>
+                            <constraint firstItem="C6V-jR-Eke" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4VR-wE-UyQ"/>
+                            <constraint firstItem="fPR-Ne-TUi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4pV-Ix-MQk"/>
+                            <constraint firstItem="C6V-jR-Eke" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5MT-Nr-gWQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fMJ-Wf-ubg" secondAttribute="bottom" constant="20" id="Dhx-3E-afZ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C6V-jR-Eke" secondAttribute="bottom" id="Gth-a4-L7W"/>
+                            <constraint firstAttribute="trailing" secondItem="fPR-Ne-TUi" secondAttribute="trailing" id="MsT-Wd-cgv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fMJ-Wf-ubg" secondAttribute="trailing" id="UsK-Ra-dhq"/>
+                            <constraint firstItem="fPR-Ne-TUi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hjo-lm-pEB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fPR-Ne-TUi" secondAttribute="bottom" id="yaU-bW-wxw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="B5a-pz-6so"/>
+                    <connections>
+                        <outlet property="signIn" destination="8LM-Qu-a4s" id="8gr-59-iVb"/>
+                        <outlet property="signUp" destination="eeG-TU-jCR" id="dOX-kN-gtO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978.39999999999998" y="133.5832083958021"/>
+        </scene>
+        <!--Sign InVC-->
+        <scene sceneID="BcM-JJ-2gh">
+            <objects>
+                <viewController id="0CH-is-FG0" customClass="SignInVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="puf-9o-GhB"/>
+                        <viewControllerLayoutGuide type="bottom" id="3pH-kp-QEt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AN7-07-KcT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEu-cb-haV">
+                                <rect key="frame" x="16" y="28" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="uJJ-Zd-7zY"/>
+                                    <constraint firstAttribute="height" constant="40" id="vOa-rB-SEL"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="SEa-n1-Jlg" kind="unwind" customClass="UnwindSegue" customModule="AppIdeas" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="puP-K1-aZh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="wEu-cb-haV" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="NEe-Nz-9iF"/>
+                            <constraint firstItem="wEu-cb-haV" firstAttribute="top" secondItem="puf-9o-GhB" secondAttribute="bottom" constant="8" id="X1c-Ei-FZQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="wEu-cb-haV" id="Sb3-ga-wby"/>
+                        <segue destination="3sW-fo-4hg" kind="custom" identifier="SignInToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="YA6-dJ-ccM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2GI-EE-F0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SEa-n1-Jlg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1712.8" y="133.5832083958021"/>
+        </scene>
+        <!--IdeasTabBar-->
+        <scene sceneID="c0s-Fi-9lE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IdeasTabBar" id="3sW-fo-4hg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9N-3X-0s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2311" y="539"/>
+        </scene>
+        <!--Sign UpVC-->
+        <scene sceneID="EOs-Q3-fKU">
+            <objects>
+                <viewController id="ysb-RG-PVm" customClass="SignUpVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VdP-VA-Fwf"/>
+                        <viewControllerLayoutGuide type="bottom" id="hay-Ht-sHQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OdM-s1-5aJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lg0-rJ-NCj">
+                                <rect key="frame" x="16" y="28" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="PLP-BR-ER9"/>
+                                    <constraint firstAttribute="height" constant="40" id="cSz-xV-S8V"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="HVX-xb-cDk" kind="unwind" customClass="UnwindSegue" customModule="AppIdeas" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="1Hr-bw-KNP"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-xe-vLx">
+                                <rect key="frame" x="16" y="194" width="343" height="280"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KVp-m0-l1V" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="hOS-eK-Hka"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.28933465479999998" green="0.57219773529999995" blue="0.74907875059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-W1-srd" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JqI-0E-bEb"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.28933465479999998" green="0.57219773529999995" blue="0.74907875059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or Phone Number" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eQz-PQ-yko" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="120" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FvC-gQ-l5W"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.28933465479999998" green="0.57219773529999995" blue="0.74907875059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-Hl-fKX" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="03K-Xd-W5s"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.28933465479999998" green="0.57219773529999995" blue="0.74907875059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-Nv-pwa" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="240" width="343" height="40"/>
+                                        <color key="backgroundColor" red="0.28933465479999998" green="0.57219773529999995" blue="0.74907875059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mCp-GL-2qH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.30172264580000002" green="0.54211866860000002" blue="0.67065250870000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="1" height="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signUpButtonTapped:" destination="ysb-RG-PVm" eventType="touchUpInside" id="xwf-Kr-mKg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join AppIdeas Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-Q9-r0e">
+                                <rect key="frame" x="16" y="134" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="99W-vX-81U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lg0-rJ-NCj" firstAttribute="top" secondItem="VdP-VA-Fwf" secondAttribute="bottom" constant="8" id="05u-zR-Zw2"/>
+                            <constraint firstItem="3nQ-xe-vLx" firstAttribute="centerY" secondItem="OdM-s1-5aJ" secondAttribute="centerY" id="3wK-qX-T3W"/>
+                            <constraint firstItem="3nQ-xe-vLx" firstAttribute="centerX" secondItem="OdM-s1-5aJ" secondAttribute="centerX" id="IQ0-30-VcE"/>
+                            <constraint firstItem="3nQ-xe-vLx" firstAttribute="top" secondItem="fOx-Q9-r0e" secondAttribute="bottom" constant="20" id="R8b-WG-qQE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3nQ-xe-vLx" secondAttribute="trailing" id="X4g-qI-IS0"/>
+                            <constraint firstItem="fOx-Q9-r0e" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="faP-ik-TSg"/>
+                            <constraint firstItem="Lg0-rJ-NCj" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="hUf-pe-dlc"/>
+                            <constraint firstItem="fOx-Q9-r0e" firstAttribute="trailing" secondItem="OdM-s1-5aJ" secondAttribute="trailingMargin" id="sal-J6-IWo"/>
+                            <constraint firstItem="3nQ-xe-vLx" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="vzC-PH-8al"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appIdeasLabel" destination="fOx-Q9-r0e" id="qPE-Xc-jhf"/>
+                        <outlet property="cancelButton" destination="Lg0-rJ-NCj" id="Hns-Pv-Fml"/>
+                        <outlet property="emailOrPhoneTextField" destination="eQz-PQ-yko" id="ErN-BH-Z5j"/>
+                        <outlet property="fullNameTextField" destination="KVp-m0-l1V" id="DP0-1w-79J"/>
+                        <outlet property="passwordTextField" destination="Heq-Hl-fKX" id="prv-xU-f5W"/>
+                        <outlet property="signUpButton" destination="fWM-Nv-pwa" id="kFt-MN-Hxd"/>
+                        <outlet property="signUpStackView" destination="3nQ-xe-vLx" id="75f-jn-3Ec"/>
+                        <outlet property="userNameTextField" destination="Sfa-W1-srd" id="kOJ-9w-Vqd"/>
+                        <segue destination="3sW-fo-4hg" kind="custom" identifier="SignUpToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="Hzf-Fg-ME9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bke-Ba-DMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HVX-xb-cDk" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1600.8" y="960.2698650674663"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="414" height="755"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YA6-dJ-ccM"/>
+    </inferredMetricsTieBreakers>
+</document>

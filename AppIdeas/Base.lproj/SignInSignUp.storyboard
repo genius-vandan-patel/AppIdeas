@@ -149,15 +149,164 @@
                                     <segue destination="SEa-n1-Jlg" kind="unwind" customClass="UnwindSegue" customModule="AppIdeas" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="puP-K1-aZh"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="28T-KB-feK">
+                                <rect key="frame" x="16" y="283.5" width="343" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GzQ-EE-nfh" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <color key="backgroundColor" red="0.37519541382789612" green="0.25191494822502136" blue="0.86281400918960571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="U26-4K-MRB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Sign In Using Email">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="emailSignInButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="8s3-bC-iTE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzv-bD-duG" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="40"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="HyB-Ww-el9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Sign In Using Facebook">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="emailSignInButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="3S8-22-S75"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cKh-R7-2ik">
+                                <rect key="frame" x="16" y="108" width="343" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eHl-xi-WvI" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="iyF-Qu-Hyv"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X2g-pU-bWF" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="QaG-xa-Ff2"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IL-W3-o7D" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="120" width="343" height="40"/>
+                                        <color key="backgroundColor" red="0.37519541382789612" green="0.25191494822502136" blue="0.86281400918960571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LLT-Jy-XEC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="SIGN IN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signInButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="xEl-pf-9gS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="28T-KB-feK" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="19y-8s-OUt"/>
+                            <constraint firstItem="28T-KB-feK" firstAttribute="centerY" secondItem="AN7-07-KcT" secondAttribute="centerY" id="4Ak-eq-t0b"/>
+                            <constraint firstItem="cKh-R7-2ik" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="ARQ-dE-zvS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cKh-R7-2ik" secondAttribute="trailing" id="Iib-Np-KXa"/>
+                            <constraint firstItem="cKh-R7-2ik" firstAttribute="top" secondItem="wEu-cb-haV" secondAttribute="bottom" constant="40" id="Lg5-8X-p31"/>
                             <constraint firstItem="wEu-cb-haV" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="NEe-Nz-9iF"/>
                             <constraint firstItem="wEu-cb-haV" firstAttribute="top" secondItem="puf-9o-GhB" secondAttribute="bottom" constant="8" id="X1c-Ei-FZQ"/>
+                            <constraint firstItem="28T-KB-feK" firstAttribute="centerX" secondItem="AN7-07-KcT" secondAttribute="centerX" id="gXb-7i-ir9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="28T-KB-feK" secondAttribute="trailing" id="tey-42-8Zr"/>
+                            <constraint firstItem="cKh-R7-2ik" firstAttribute="centerX" secondItem="AN7-07-KcT" secondAttribute="centerX" id="wnH-cE-8Xn"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="wEu-cb-haV" id="Sb3-ga-wby"/>
+                        <outlet property="emailPasswordStackView" destination="cKh-R7-2ik" id="2pZ-Am-Pev"/>
+                        <outlet property="emailSignInButton" destination="GzQ-EE-nfh" id="k64-jd-tTU"/>
+                        <outlet property="emailTextField" destination="eHl-xi-WvI" id="oEn-Sr-aCh"/>
+                        <outlet property="passwordTextField" destination="X2g-pU-bWF" id="vOm-Kh-7c1"/>
+                        <outlet property="signInButton" destination="5IL-W3-o7D" id="FIj-zq-igV"/>
                         <segue destination="3sW-fo-4hg" kind="custom" identifier="SignInToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="YA6-dJ-ccM"/>
                     </connections>
                 </viewController>

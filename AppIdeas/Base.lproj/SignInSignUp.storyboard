@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+            <string>HelveticaNeue-BoldItalic</string>
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LandingVC-->
         <scene sceneID="tne-QT-ifu">
@@ -347,7 +354,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3nQ-xe-vLx">
-                                <rect key="frame" x="16" y="194" width="343" height="280"/>
+                                <rect key="frame" x="16" y="187" width="343" height="280"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KVp-m0-l1V" customClass="CustomizedTextField" customModule="AppIdeas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -356,7 +363,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -388,7 +395,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -420,7 +427,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -452,7 +459,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -514,7 +521,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join AppIdeas Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-Q9-r0e">
-                                <rect key="frame" x="16" y="134" width="343" height="40"/>
+                                <rect key="frame" x="16" y="127" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="99W-vX-81U"/>
                                 </constraints>
@@ -526,13 +533,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lg0-rJ-NCj" firstAttribute="top" secondItem="VdP-VA-Fwf" secondAttribute="bottom" constant="8" id="05u-zR-Zw2"/>
-                            <constraint firstItem="3nQ-xe-vLx" firstAttribute="centerY" secondItem="OdM-s1-5aJ" secondAttribute="centerY" id="3wK-qX-T3W"/>
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="centerX" secondItem="OdM-s1-5aJ" secondAttribute="centerX" id="IQ0-30-VcE"/>
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="top" secondItem="fOx-Q9-r0e" secondAttribute="bottom" constant="20" id="R8b-WG-qQE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3nQ-xe-vLx" secondAttribute="trailing" id="X4g-qI-IS0"/>
                             <constraint firstItem="fOx-Q9-r0e" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="faP-ik-TSg"/>
                             <constraint firstItem="Lg0-rJ-NCj" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="hUf-pe-dlc"/>
                             <constraint firstItem="fOx-Q9-r0e" firstAttribute="trailing" secondItem="OdM-s1-5aJ" secondAttribute="trailingMargin" id="sal-J6-IWo"/>
+                            <constraint firstItem="hay-Ht-sHQ" firstAttribute="top" secondItem="3nQ-xe-vLx" secondAttribute="bottom" constant="200" id="t6l-Dq-O5d"/>
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="vzC-PH-8al"/>
                         </constraints>
                     </view>
@@ -544,6 +551,7 @@
                         <outlet property="passwordTextField" destination="Heq-Hl-fKX" id="prv-xU-f5W"/>
                         <outlet property="signUpButton" destination="fWM-Nv-pwa" id="kFt-MN-Hxd"/>
                         <outlet property="signUpStackView" destination="3nQ-xe-vLx" id="75f-jn-3Ec"/>
+                        <outlet property="stackViewBottonConstraint" destination="t6l-Dq-O5d" id="kAJ-Ro-NYS"/>
                         <outlet property="userNameTextField" destination="Sfa-W1-srd" id="kOJ-9w-Vqd"/>
                         <segue destination="3sW-fo-4hg" kind="custom" identifier="SignUpToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="Hzf-Fg-ME9"/>
                     </connections>
@@ -558,6 +566,6 @@
         <image name="Background" width="414" height="755"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YA6-dJ-ccM"/>
+        <segue reference="Hzf-Fg-ME9"/>
     </inferredMetricsTieBreakers>
 </document>

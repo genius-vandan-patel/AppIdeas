@@ -25,6 +25,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var passwordTextField: CustomizedTextField!
     @IBOutlet weak var fullNameTextField: CustomizedTextField!
     @IBOutlet weak var signUpButton: CustomizedButton!
+    @IBOutlet weak var stackViewBottonConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,11 @@ class SignUpVC: UIViewController {
         appIdeasAnimation.fadeInAnimation(signUpStackView, delay: 0.3, duration: 1.0)
         setTextFieldDelegate(for: [emailOrPhoneTextField, userNameTextField, passwordTextField, fullNameTextField])
         signUpButton.disableButtonWithAnimation(1.0, reducingAlphaTo: 0.6)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func signUpButtonTapped(_ sender: CustomizedButton) {
@@ -62,6 +68,27 @@ class SignUpVC: UIViewController {
     func decideButtonStatus() {
         fullNameTextField.backgroundColor == greenForValidInput && userNameTextField.backgroundColor == greenForValidInput && emailOrPhoneTextField.backgroundColor == greenForValidInput && passwordTextField.backgroundColor == greenForValidInput ? signUpButton.enableButtonWithAnimation(0.5, increasingAlphaTo: 1.0) : signUpButton.disableButtonWithAnimation(0.5, reducingAlphaTo: 0.6)
     }
+    
+    @objc func keyboardNotification(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+        let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+        let bufferSpace: CGFloat = 10.0
+        if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+            self.stackViewBottonConstraint.constant = 200
+            
+        } else {
+            self.stackViewBottonConstraint.constant = ((endFrame?.size.height)! + bufferSpace)
+        }
+        UIView.animate(withDuration: duration,
+                       delay: TimeInterval(0),
+                       options: animationCurve,
+                       animations: { self.view.layoutIfNeeded() },
+                       completion: nil)
+    }
 }
 
 extension SignUpVC: UITextFieldDelegate {
@@ -82,9 +109,13 @@ extension SignUpVC: UITextFieldDelegate {
         else if textField == emailOrPhoneTextField { emailOrPhoneTextField.validateEmailOrPhone(sanitizedString) }
         else if textField == passwordTextField { passwordTextField.validatePassword(sanitizedString) }
         
-        //textField.backgroundColor = sanitizedString.isEmpty ?  redForInvalidInput : greenForValidInput
         decideButtonStatus()
         
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
         return true
     }
     

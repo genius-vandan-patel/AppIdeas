@@ -26,6 +26,8 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var fullNameTextField: CustomizedTextField!
     @IBOutlet weak var signUpButton: CustomizedButton!
     @IBOutlet weak var stackViewBottonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var verificationEmailLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,8 @@ class SignUpVC: UIViewController {
         appIdeasAnimation.fadeInAnimation(signUpStackView, delay: 0.3, duration: 1.0)
         setTextFieldDelegate(for: [emailOrPhoneTextField, userNameTextField, passwordTextField, fullNameTextField])
         signUpButton.disableButtonWithAnimation(1.0, reducingAlphaTo: 0.6)
+        verificationEmailLabel.text = "Please check your inbox and verify your email."
+        appIdeasAnimation.hideView(verificationEmailLabel, withAnimation: false)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
@@ -53,6 +57,22 @@ class SignUpVC: UIViewController {
                 self?.hideActivityIndicator()
                 return
             }
+            
+            //send user verification email as soon it's created successfully
+            guard let user = user else {
+                print("Erro getting the user from Firebase")
+                return
+            }
+            user.sendEmailVerification(completion: { (error) in
+                if error != nil {
+                    self?.showAlertMessage(withTitle: "Error", message: "Failed To Send Verification Email", actions: [okAction])
+                    return
+                }
+                appIdeasAnimation.showView((self?.verificationEmailLabel)!, withAnimation: true)
+                Timer.scheduledTimer(timeInterval: TimeInterval.init(2.0), target: self!, selector: #selector(self?.hideEmailVerificationLabel), userInfo: nil, repeats: false)
+            })
+            
+            //store user's full name into the database whenever user is created successfully
             ideaStorage.child("innovators").child(username).setValue(["fullName": fullName], withCompletionBlock: { (error, reference) in
                 if error != nil {
                     self?.showAlertMessage(withTitle: "Error", message: error?.localizedDescription, actions: [okAction])
@@ -62,6 +82,13 @@ class SignUpVC: UIViewController {
                 self?.hideActivityIndicator()
             })
         }
+    }
+    
+    @objc func hideEmailVerificationLabel() {
+        appIdeasAnimation.hideView(verificationEmailLabel, withAnimation: true) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     func decideButtonStatus() {

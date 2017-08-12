@@ -459,7 +459,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -529,6 +529,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uzd-J5-8nZ">
+                                <rect key="frame" x="16" y="517" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sBx-1f-45v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="0.28933465480804443" green="0.57219773530960083" blue="0.74907875061035156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -536,8 +545,11 @@
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="centerX" secondItem="OdM-s1-5aJ" secondAttribute="centerX" id="IQ0-30-VcE"/>
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="top" secondItem="fOx-Q9-r0e" secondAttribute="bottom" constant="20" id="R8b-WG-qQE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3nQ-xe-vLx" secondAttribute="trailing" id="X4g-qI-IS0"/>
+                            <constraint firstItem="Uzd-J5-8nZ" firstAttribute="trailing" secondItem="OdM-s1-5aJ" secondAttribute="trailingMargin" id="cZc-ki-UfJ"/>
                             <constraint firstItem="fOx-Q9-r0e" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="faP-ik-TSg"/>
+                            <constraint firstItem="Uzd-J5-8nZ" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="h9d-ZP-23d"/>
                             <constraint firstItem="Lg0-rJ-NCj" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="hUf-pe-dlc"/>
+                            <constraint firstItem="Uzd-J5-8nZ" firstAttribute="top" secondItem="3nQ-xe-vLx" secondAttribute="bottom" constant="50" id="oqs-QO-hcH"/>
                             <constraint firstItem="fOx-Q9-r0e" firstAttribute="trailing" secondItem="OdM-s1-5aJ" secondAttribute="trailingMargin" id="sal-J6-IWo"/>
                             <constraint firstItem="hay-Ht-sHQ" firstAttribute="top" secondItem="3nQ-xe-vLx" secondAttribute="bottom" constant="200" id="t6l-Dq-O5d"/>
                             <constraint firstItem="3nQ-xe-vLx" firstAttribute="leading" secondItem="OdM-s1-5aJ" secondAttribute="leadingMargin" id="vzC-PH-8al"/>
@@ -553,6 +565,7 @@
                         <outlet property="signUpStackView" destination="3nQ-xe-vLx" id="75f-jn-3Ec"/>
                         <outlet property="stackViewBottonConstraint" destination="t6l-Dq-O5d" id="kAJ-Ro-NYS"/>
                         <outlet property="userNameTextField" destination="Sfa-W1-srd" id="kOJ-9w-Vqd"/>
+                        <outlet property="verificationEmailLabel" destination="Uzd-J5-8nZ" id="SU3-zp-Gwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bke-Ba-DMx" userLabel="First Responder" sceneMemberID="firstResponder"/>

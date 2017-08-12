@@ -64,4 +64,18 @@ class AppIdeasAnimation {
             view.alpha = 1.0
         }
     }
+    
+    //animation for signUpVC
+    func hideView(_ view: UIView, withAnimation: Bool, completion: @escaping () -> ()) {
+        if withAnimation {
+            UIView.animate(withDuration: 1.0, animations: {
+                view.alpha = 0.0
+            }, completion: { (_) in
+                completion()
+            })
+        } else {
+            view.alpha = 0.0
+            completion()
+        }
+    }
 }

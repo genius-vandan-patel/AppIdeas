@@ -44,10 +44,25 @@ class SignInVC: UIViewController {
     }
     
     @IBAction func signInButtonTapped(_ sender: CustomizedButton) {
+        showActivityIndicator()
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
+            guard let user = user else {
+                self?.hideActivityIndicator()
+                print("Can not retrieve user from Firebase")
+                return
+            }
             if error != nil {
+                self?.hideActivityIndicator()
                 appIdeasAnimation.shakeAnimation((self?.emailPasswordStackView)!)
+                return
+            }
+            if !user.isEmailVerified {
+                self?.hideActivityIndicator()
+                self?.showAlertMessage(withTitle: "ERROR", message: "Your Email Is Not Verified", actions: [okAction])
+            } else {
+                self?.hideActivityIndicator()
+                self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
             }
         }
     }

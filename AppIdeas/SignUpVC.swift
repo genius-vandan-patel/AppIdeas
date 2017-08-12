@@ -60,7 +60,6 @@ class SignUpVC: UIViewController {
                     return
                 }
                 self?.hideActivityIndicator()
-                self?.performSegue(withIdentifier: SEGUES.SignUpToIdeasTabBar, sender: nil)
             })
         }
     }

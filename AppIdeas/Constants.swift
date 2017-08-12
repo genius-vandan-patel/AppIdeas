@@ -15,6 +15,5 @@ struct Constants {
 }
 
 struct SEGUES {
-    static let SignUpToIdeasTabBar = "SignUpToIdeasTabBar"
     static let SignInToIdeasTabBar = "SignInToIdeasTabBar"
 }

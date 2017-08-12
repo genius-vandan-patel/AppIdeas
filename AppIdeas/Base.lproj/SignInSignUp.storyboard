@@ -553,7 +553,6 @@
                         <outlet property="signUpStackView" destination="3nQ-xe-vLx" id="75f-jn-3Ec"/>
                         <outlet property="stackViewBottonConstraint" destination="t6l-Dq-O5d" id="kAJ-Ro-NYS"/>
                         <outlet property="userNameTextField" destination="Sfa-W1-srd" id="kOJ-9w-Vqd"/>
-                        <segue destination="3sW-fo-4hg" kind="custom" identifier="SignUpToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="Hzf-Fg-ME9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bke-Ba-DMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -565,7 +564,4 @@
     <resources>
         <image name="Background" width="414" height="755"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Hzf-Fg-ME9"/>
-    </inferredMetricsTieBreakers>
 </document>

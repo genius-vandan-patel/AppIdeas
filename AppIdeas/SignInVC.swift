@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class SignInVC: UIViewController {
     
@@ -17,7 +18,8 @@ class SignInVC: UIViewController {
     @IBOutlet weak var passwordTextField: CustomizedTextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var signInButton: CustomizedButton!
-
+    @IBOutlet weak var facebookButton: CustomizedButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cancelButton.setImage(#imageLiteral(resourceName: "Cancel"), for: .normal)
@@ -64,6 +66,57 @@ class SignInVC: UIViewController {
                 self?.hideActivityIndicator()
                 self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
             }
+        }
+    }
+    
+    
+    @IBAction func facebookButtonTapped(_ sender: CustomizedButton) {
+        let facebookManager = FBSDKLoginManager()
+        facebookManager.logIn(withReadPermissions: ["email", "public_profile"], from: self) { [weak self] (result, error) in
+            self?.showActivityIndicator()
+            if error != nil {
+                self?.showAlertMessage(withTitle: "Facebook LogIn Failed", message: "Can not authenticate using Facebook", actions: [okAction])
+                return
+            }
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"name"]).start(completionHandler: { (connection, result, error) in
+                if error != nil {
+                    self?.hideActivityIndicator()
+                    print("Failed To Start Graph Request", error?.localizedDescription as Any)
+                    return
+                }
+                guard let facebookTokenString = FBSDKAccessToken.current().tokenString, let result = result as? Dictionary<String, Any>  else {
+                    self?.hideActivityIndicator()
+                    return }
+                let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: facebookTokenString)
+                self?.firebaseSignIn(withCredentials: facebookCredentials, completion: { (user, success) in
+                    if success {
+                        ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.facebookName: result["name"], FIR.authMethod: FIR.facebook], withCompletionBlock: { (error, reference) in
+                            self?.hideActivityIndicator()
+                            if error != nil {
+                                print("Error uploading information to Firebase Database : ", error?.localizedDescription as Any)
+                                return
+                            }
+                            print("Information uploaded to Firebase")
+                            self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
+                        })
+                    } else {
+                        self?.hideActivityIndicator()
+                    }
+                })
+            })
+        }
+    }
+    
+    func firebaseSignIn(withCredentials credentials: AuthCredential, completion: @escaping (User, Bool)->()) {
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            guard let user = user else { return }
+            if error != nil {
+                print("Facebook LogIn With Firebase Failed : ", error?.localizedDescription as Any)
+                completion(user, false)
+                return
+            }
+            completion(user, true)
+            print("Firebase Log In Successful!")
         }
     }
     

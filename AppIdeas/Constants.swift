@@ -14,6 +14,16 @@ struct Constants {
     static let phoneNumberRegEx = "^\\(?\\d{3}\\)?-?\\d{3}-?\\d{4}$"
 }
 
+struct FIR {
+    static let innovators = "innovators"
+    static let provider = "provider"
+    static let fullName = "fullName"
+    static let authMethod = "authMedhod"
+    static let email = "email"
+    static let facebook = "facebook"
+    static let facebookName = "faceBookName"
+}
+
 struct SEGUES {
     static let SignInToIdeasTabBar = "SignInToIdeasTabBar"
 }

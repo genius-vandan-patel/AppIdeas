@@ -224,7 +224,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="emailSignInButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="3S8-22-S75"/>
+                                            <action selector="facebookButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="XGj-cz-wHz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -312,6 +312,7 @@
                         <outlet property="emailPasswordStackView" destination="cKh-R7-2ik" id="2pZ-Am-Pev"/>
                         <outlet property="emailSignInButton" destination="GzQ-EE-nfh" id="k64-jd-tTU"/>
                         <outlet property="emailTextField" destination="eHl-xi-WvI" id="oEn-Sr-aCh"/>
+                        <outlet property="facebookButton" destination="Yzv-bD-duG" id="pSN-XQ-pJd"/>
                         <outlet property="passwordTextField" destination="X2g-pU-bWF" id="vOm-Kh-7c1"/>
                         <outlet property="signInButton" destination="5IL-W3-o7D" id="FIj-zq-igV"/>
                         <segue destination="3sW-fo-4hg" kind="custom" identifier="SignInToIdeasTabBar" customClass="CustomizedSegue" customModule="AppIdeas" customModuleProvider="target" id="YA6-dJ-ccM"/>

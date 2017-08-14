@@ -73,7 +73,7 @@ class SignUpVC: UIViewController {
             })
             
             //store user's full name into the database whenever user is created successfully
-            ideaStorage.child("innovators").child(username).setValue(["fullName": fullName], withCompletionBlock: { (error, reference) in
+            ideaStorage.child(FIR.innovators).child(username).setValue([FIR.fullName:fullName, FIR.authMethod: FIR.email], withCompletionBlock: { (error, reference) in
                 if error != nil {
                     self?.showAlertMessage(withTitle: "Error", message: error?.localizedDescription, actions: [okAction])
                     self?.hideActivityIndicator()

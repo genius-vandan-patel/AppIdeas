@@ -20,7 +20,7 @@
         <!--LandingVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LandingVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="landingPage" id="BYZ-38-t0r" customClass="LandingVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

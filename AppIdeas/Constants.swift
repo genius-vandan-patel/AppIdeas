@@ -27,3 +27,8 @@ struct FIR {
 struct SEGUES {
     static let SignInToIdeasTabBar = "SignInToIdeasTabBar"
 }
+
+struct Storyboard {
+    static let landingPage = "landingPage"
+    static let tabBar = "ideasTabBar"
+}

@@ -78,4 +78,14 @@ class AppIdeasAnimation {
             completion()
         }
     }
+    
+    //animation for signInVC
+    func buttonClickAnimation(for button: UIButton, completion: @escaping (Bool)->()) {
+        button.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        UIView.animate(withDuration: 0.2, animations: {
+            button.transform = .identity
+        }) { (success) in
+            completion(success)
+        }
+    }
 }

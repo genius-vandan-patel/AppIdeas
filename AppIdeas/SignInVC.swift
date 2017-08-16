@@ -71,39 +71,43 @@ class SignInVC: UIViewController {
     
     
     @IBAction func facebookButtonTapped(_ sender: CustomizedButton) {
-        let facebookManager = FBSDKLoginManager()
-        facebookManager.logIn(withReadPermissions: ["email", "public_profile"], from: self) { [weak self] (result, error) in
-            self?.showActivityIndicator()
-            if error != nil {
-                self?.showAlertMessage(withTitle: "Facebook LogIn Failed", message: "Can not authenticate using Facebook", actions: [okAction])
-                return
-            }
-            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"name"]).start(completionHandler: { (connection, result, error) in
-                if error != nil {
-                    self?.hideActivityIndicator()
-                    print("Failed To Start Graph Request", error?.localizedDescription as Any)
-                    return
-                }
-                guard let facebookTokenString = FBSDKAccessToken.current().tokenString, let result = result as? Dictionary<String, Any>  else {
-                    self?.hideActivityIndicator()
-                    return }
-                let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: facebookTokenString)
-                self?.firebaseSignIn(withCredentials: facebookCredentials, completion: { (user, success) in
-                    if success {
-                        ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.facebookName: result["name"], FIR.authMethod: FIR.facebook], withCompletionBlock: { (error, reference) in
-                            self?.hideActivityIndicator()
-                            if error != nil {
-                                print("Error uploading information to Firebase Database : ", error?.localizedDescription as Any)
-                                return
-                            }
-                            print("Information uploaded to Firebase")
-                            self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
-                        })
-                    } else {
-                        self?.hideActivityIndicator()
+        appIdeasAnimation.buttonClickAnimation(for: sender) { (success) in
+            if success {
+                let facebookManager = FBSDKLoginManager()
+                facebookManager.logIn(withReadPermissions: ["email", "public_profile"], from: self) { [weak self] (result, error) in
+                    self?.showActivityIndicator()
+                    if error != nil {
+                        self?.showAlertMessage(withTitle: "Facebook LogIn Failed", message: "Can not authenticate using Facebook", actions: [okAction])
+                        return
                     }
-                })
-            })
+                    FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"name"]).start(completionHandler: { (connection, result, error) in
+                        if error != nil {
+                            self?.hideActivityIndicator()
+                            print("Failed To Start Graph Request", error?.localizedDescription as Any)
+                            return
+                        }
+                        guard let facebookTokenString = FBSDKAccessToken.current().tokenString, let result = result as? Dictionary<String, Any>  else {
+                            self?.hideActivityIndicator()
+                            return }
+                        let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: facebookTokenString)
+                        self?.firebaseSignIn(withCredentials: facebookCredentials, completion: { (user, success) in
+                            if success {
+                                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.facebookName: result["name"], FIR.authMethod: FIR.facebook], withCompletionBlock: { (error, reference) in
+                                    self?.hideActivityIndicator()
+                                    if error != nil {
+                                        print("Error uploading information to Firebase Database : ", error?.localizedDescription as Any)
+                                        return
+                                    }
+                                    print("Information uploaded to Firebase")
+                                    self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
+                                })
+                            } else {
+                                self?.hideActivityIndicator()
+                            }
+                        })
+                    })
+                }
+            }
         }
     }
     

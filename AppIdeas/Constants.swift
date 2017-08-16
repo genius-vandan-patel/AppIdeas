@@ -22,6 +22,8 @@ struct FIR {
     static let email = "email"
     static let facebook = "facebook"
     static let facebookName = "faceBookName"
+    static let googleName = "googleName"
+    static let google = "google"
 }
 
 struct SEGUES {

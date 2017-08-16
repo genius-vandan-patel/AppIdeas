@@ -157,7 +157,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="28T-KB-feK">
-                                <rect key="frame" x="16" y="283.5" width="343" height="100"/>
+                                <rect key="frame" x="16" y="288" width="343" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GzQ-EE-nfh" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -225,6 +225,40 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="facebookButtonTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="XGj-cz-wHz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvz-20-eJd" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="120" width="343" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Aby-WH-Y7i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Sign In Using Google">
+                                            <color key="titleColor" red="0.77286219596862793" green="0.24111084640026093" blue="0.17652827501296997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="2" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="googleTapped:" destination="0CH-is-FG0" eventType="touchUpInside" id="KAb-Eo-WdY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -296,11 +330,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="28T-KB-feK" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="19y-8s-OUt"/>
-                            <constraint firstItem="28T-KB-feK" firstAttribute="centerY" secondItem="AN7-07-KcT" secondAttribute="centerY" id="4Ak-eq-t0b"/>
                             <constraint firstItem="cKh-R7-2ik" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="ARQ-dE-zvS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKh-R7-2ik" secondAttribute="trailing" id="Iib-Np-KXa"/>
                             <constraint firstItem="cKh-R7-2ik" firstAttribute="top" secondItem="wEu-cb-haV" secondAttribute="bottom" constant="40" id="Lg5-8X-p31"/>
                             <constraint firstItem="wEu-cb-haV" firstAttribute="leading" secondItem="AN7-07-KcT" secondAttribute="leadingMargin" id="NEe-Nz-9iF"/>
+                            <constraint firstItem="28T-KB-feK" firstAttribute="top" secondItem="cKh-R7-2ik" secondAttribute="bottom" constant="20" id="TLj-nc-IsD"/>
                             <constraint firstItem="wEu-cb-haV" firstAttribute="top" secondItem="puf-9o-GhB" secondAttribute="bottom" constant="8" id="X1c-Ei-FZQ"/>
                             <constraint firstItem="28T-KB-feK" firstAttribute="centerX" secondItem="AN7-07-KcT" secondAttribute="centerX" id="gXb-7i-ir9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="28T-KB-feK" secondAttribute="trailing" id="tey-42-8Zr"/>

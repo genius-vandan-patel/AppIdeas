@@ -12,5 +12,6 @@ target 'AppIdeas' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
 
 end

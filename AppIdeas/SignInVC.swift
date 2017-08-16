@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import GoogleSignIn
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+
     
     @IBOutlet weak var emailPasswordStackView: UIStackView!
     @IBOutlet weak var emailSignInButton: CustomizedButton!
@@ -26,12 +28,45 @@ class SignInVC: UIViewController {
         appIdeasAnimation.hideView(emailPasswordStackView, withAnimation: false)
         setTextFieldDelegate(for: [emailTextField, passwordTextField])
         signInButton.disableButtonWithAnimation(1.0, reducingAlphaTo: 0.5)
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    //delegate method for Google Sign-In
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        showActivityIndicator()
+        if error != nil {
+            hideActivityIndicator()
+            print("Error Signing In With Google : " , error.localizedDescription)
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let googleCredentials = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        let fullName = user.profile.name
+        firebaseSignIn(withCredentials: googleCredentials) { [weak self] (user, success) in
+            if success {
+                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.googleName: fullName, FIR.authMethod: FIR.google], withCompletionBlock: { (error, reference) in
+                    self?.hideActivityIndicator()
+                    if error != nil {
+                        print("Error uploading google information to Firebase : ", error?.localizedDescription as Any)
+                        return
+                    }
+                    self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
+                })
+            }
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+    }
+
     @IBAction func emailSignInButtonTapped(_ sender: CustomizedButton) {
         appIdeasAnimation.hideView(emailSignInButton, withAnimation: true)
         appIdeasAnimation.showView(emailPasswordStackView, withAnimation: true)
@@ -111,6 +146,15 @@ class SignInVC: UIViewController {
         }
     }
     
+    
+    @IBAction func googleTapped(_ sender: CustomizedButton) {
+        appIdeasAnimation.buttonClickAnimation(for: sender) { (success) in
+            if success {
+                GIDSignIn.sharedInstance().signIn()
+            }
+        }
+    }
+    
     func firebaseSignIn(withCredentials credentials: AuthCredential, completion: @escaping (User, Bool)->()) {
         Auth.auth().signIn(with: credentials) { (user, error) in
             guard let user = user else { return }
@@ -119,8 +163,8 @@ class SignInVC: UIViewController {
                 completion(user, false)
                 return
             }
-            completion(user, true)
             print("Firebase Log In Successful!")
+            completion(user, true)
         }
     }
     

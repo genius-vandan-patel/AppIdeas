@@ -10,4 +10,6 @@ import Foundation
 
 struct Innovator {
     var fullName: String!
+    var ideas: [Idea]?
+    var comments: [Comment]?
 }

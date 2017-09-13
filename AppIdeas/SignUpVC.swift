@@ -14,6 +14,7 @@ let redForInvalidInput = UIColor(red: 255/255, green: 153/255, blue: 153/255, al
 let greenForValidInput = UIColor(red: 204/255, green: 255/255, blue: 153/255, alpha: 1.0)
 let ideaStorage = DataStorage.sharedInstance.databaseRef
 let okAction = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+let dataStorage = DataStorage.sharedInstance
 
 class SignUpVC: UIViewController {
     
@@ -72,8 +73,10 @@ class SignUpVC: UIViewController {
                 Timer.scheduledTimer(timeInterval: TimeInterval.init(2.0), target: self!, selector: #selector(self?.hideEmailVerificationLabel), userInfo: nil, repeats: false)
             })
             
+            let innovator = Innovator(fullName: fullName, ideas: nil, comments: nil, innovatorID: user.uid)
+            
             //store user's full name into the database whenever user is created successfully
-            ideaStorage.child(FIR.innovators).child(username).setValue([FIR.fullName:fullName, FIR.authMethod: FIR.email], withCompletionBlock: { (error, reference) in
+            ideaStorage.child(FIR.innovators).child(user.uid).setValue(innovator.toDictionary(), withCompletionBlock: { (error, reference) in
                 if error != nil {
                     self?.showAlertMessage(withTitle: "Error", message: error?.localizedDescription, actions: [okAction])
                     self?.hideActivityIndicator()

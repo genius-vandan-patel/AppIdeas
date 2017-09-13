@@ -9,7 +9,29 @@
 import Foundation
 
 struct Comment {
-    var commentDescription: String!
-    var date : Date!
-    var innovator: Innovator!
+    var _commentDescription: String!
+    var _innovatorName: String!
+    
+    var commentDescription: String! {
+        get {
+            return _commentDescription
+        } set {
+            _commentDescription = newValue
+        }
+    }
+    
+    var innovatorName: String! {
+        get {
+            return _innovatorName
+        } set {
+            _innovatorName = newValue
+        }
+    }
+    
+    func toDictionary() -> Dictionary<String, Any> {
+        return [
+            "commentDescription": commentDescription,
+            "innovatorName": innovatorName
+        ]
+    }
 }

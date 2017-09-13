@@ -16,6 +16,7 @@ struct Constants {
 
 struct FIR {
     static let innovators = "innovators"
+    static let ideas = "ideas"
     static let provider = "provider"
     static let fullName = "fullName"
     static let authMethod = "authMedhod"
@@ -28,6 +29,7 @@ struct FIR {
 
 struct SEGUES {
     static let SignInToIdeasTabBar = "SignInToIdeasTabBar"
+    static let HomeToComments = "FromHomeToComments"
 }
 
 struct Storyboard {

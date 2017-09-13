@@ -12,8 +12,45 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var tappedCell: IdeaCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataStorage.getAllIdeas { (success) in
+            if success {
+                dataStorage.createInnovatorDicationary(completion: { (success) in
+                    if success {
+                        DispatchQueue.main.async { self.tableView.reloadData() }
+                    }
+                })
+            }
+        }
+    }
+    
+    @objc func commentsImagePressed(gesture: UITapGestureRecognizer) {
+        guard let cellNumber = gesture.view?.tag else { return }
+        performSegue(withIdentifier: SEGUES.HomeToComments, sender: IdeaStorage.ideas[cellNumber].ideaID)
+    }
+    
+    @objc func likeButtonPressed(_ sender: UIButton) {
+        let cellNumber = sender.tag
+        guard let likes = IdeaStorage.ideas[cellNumber].likes else { return }
+        print("Number of likes : ", likes)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let ID = sender as? String else { return }
+        if segue.identifier == SEGUES.HomeToComments {
+            if let destinationVC = segue.destination as? CommentsVC {
+                destinationVC.ideaID = ID
+            }
+        }
+    }
+    
+    func setupCommentsImageGesture(imageView: UIImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(commentsImagePressed(gesture:)))
+        tapGesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -27,16 +64,25 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return IdeaStorage.ideas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.black
+        guard let cell = Bundle.main.loadNibNamed("IdeaCell", owner: self, options: nil)?.first as? IdeaCell else {
+            print("Error Creating Cell For Idea")
+            return UITableViewCell()
+        }
+        cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
+        cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
+        cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
+        self.setupCommentsImageGesture(imageView: cell.commentsImage)
+        cell.commentsImage.tag = indexPath.row
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500.0
+        return 200.0
     }
 }

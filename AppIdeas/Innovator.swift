@@ -12,6 +12,7 @@ struct Innovator {
     var _fullName: String!
     var _ideas: [String]?
     var _comments: [String]?
+    var _likedIdeas: [String]?
     var _innovatorID: String
     
     var fullName: String! {
@@ -43,6 +44,14 @@ struct Innovator {
             return _innovatorID
         } set {
             _innovatorID = newValue
+        }
+    }
+    
+    var likedIdeas: [String]? {
+        get {
+            return _likedIdeas
+        } set {
+            _likedIdeas = newValue
         }
     }
     

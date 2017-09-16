@@ -108,6 +108,14 @@ struct DataStorage {
         }
     }
     
+    func addLikeToIdea(withID id: String, andLikes likes: Int, completion: @escaping ()->()) {
+        ideasRef.child(id).child("likes").setValue(likes) { (error, reference) in
+            if error == nil {
+                completion()
+            }
+        }
+    }
+    
     //get comment for given comment id
     func getComments(forCommentIDs IDs: [String], completion: @escaping ([Comment])->()) {
         for id in IDs {

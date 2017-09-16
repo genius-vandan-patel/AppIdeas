@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
             <string>HelveticaNeue-Medium</string>
         </array>
     </customFonts>
@@ -49,10 +50,21 @@
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-lV-uB9">
-                                        <rect key="frame" x="0.0" y="37.5" width="33" height="37.5"/>
-                                        <state key="normal" image="Like_Off"/>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xcz-FZ-chx">
+                                        <rect key="frame" x="0.0" y="37.5" width="47.5" height="37.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-lV-uB9">
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="37.5"/>
+                                                <state key="normal" image="Like_Off"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teC-PY-1qy">
+                                                <rect key="frame" x="38" y="0.0" width="9.5" height="37.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" red="0.30605891346931458" green="0.20862026512622833" blue="0.69027853012084961" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="I2G-lA-NGq" firstAttribute="leading" secondItem="5B1-Ja-jc0" secondAttribute="leading" id="FTH-Wp-Rkp"/>
@@ -127,6 +139,7 @@
                 <outlet property="commentsImage" destination="oqj-8k-Vzt" id="8se-Xm-dJT"/>
                 <outlet property="ideaTextView" destination="t5r-uU-DPF" id="1aK-to-3aD"/>
                 <outlet property="likeButton" destination="cYc-lV-uB9" id="trY-eY-vyV"/>
+                <outlet property="likesLabel" destination="teC-PY-1qy" id="Fe6-Mq-WQ3"/>
                 <outlet property="profilePicImageView" destination="K5g-zb-4rR" id="tYC-p2-2Oz"/>
                 <outlet property="usernameLabel" destination="I2G-lA-NGq" id="Wxr-CB-Qrd"/>
             </connections>

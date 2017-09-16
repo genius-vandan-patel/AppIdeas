@@ -16,6 +16,7 @@ class IdeaCell: UITableViewCell {
     @IBOutlet weak var ideaTextView: CustomizedUITextView!
     @IBOutlet weak var commentsImage: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

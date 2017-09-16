@@ -34,8 +34,12 @@ class HomeVC: UIViewController {
     
     @objc func likeButtonPressed(_ sender: UIButton) {
         let cellNumber = sender.tag
-        guard let likes = IdeaStorage.ideas[cellNumber].likes else { return }
-        print("Number of likes : ", likes)
+        let incrementedLikes = IdeaStorage.ideas[cellNumber].likes + 1
+        dataStorage.addLikeToIdea(withID: IdeaStorage.ideas[cellNumber].ideaID!, andLikes: incrementedLikes) {
+            DispatchQueue.main.async {
+                //update UI
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +79,9 @@ extension HomeVC: UITableViewDataSource {
         cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
         cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
         cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
+        if let likes = IdeaStorage.ideas[indexPath.row].likes {
+           cell.likesLabel.text = "\(likes)"
+        }
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
         cell.likeButton.tag = indexPath.row

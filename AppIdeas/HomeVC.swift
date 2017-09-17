@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController {
     
@@ -16,11 +17,19 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userID = Auth.auth().currentUser?.uid
         dataStorage.getAllIdeas { (success) in
             if success {
-                dataStorage.createInnovatorDicationary(completion: { (success) in
+                dataStorage.createInnovatorDictionary(completion: { (success) in
                     if success {
-                        DispatchQueue.main.async { self.tableView.reloadData() }
+                        dataStorage.getLikedIdeasByInnovator(for: userID!, completion: { (success) in
+                            if success {
+                                DispatchQueue.main.async {
+                                    print(InnovatorStorage.likedIdeas)
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        })
                     }
                 })
             }
@@ -34,10 +43,14 @@ class HomeVC: UIViewController {
     
     @objc func likeButtonPressed(_ sender: UIButton) {
         let cellNumber = sender.tag
-        let incrementedLikes = IdeaStorage.ideas[cellNumber].likes + 1
-        dataStorage.addLikeToIdea(withID: IdeaStorage.ideas[cellNumber].ideaID!, andLikes: incrementedLikes) {
-            DispatchQueue.main.async {
-                //update UI
+        let idea = IdeaStorage.ideas[cellNumber]
+        var likes = idea.likes
+        if sender.currentImage == #imageLiteral(resourceName: "Like_Off") {
+            likes = likes! + 1
+            dataStorage.addLikedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: IdeaStorage.ideas[cellNumber].ideaID!) {
+                DispatchQueue.main.async {
+                    sender.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal)
+                }
             }
         }
     }
@@ -58,9 +71,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: UITableViewDelegate {
-    
-}
+extension HomeVC: UITableViewDelegate {}
 
 extension HomeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,11 +91,13 @@ extension HomeVC: UITableViewDataSource {
         cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
         cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
         if let likes = IdeaStorage.ideas[indexPath.row].likes {
-           cell.likesLabel.text = "\(likes)"
+            cell.likesLabel.text = "\(likes)"
         }
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
         cell.likeButton.tag = indexPath.row
+        let isLikedIdea = InnovatorStorage.likedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
+        if isLikedIdea { cell.likeButton.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal) }
         cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
         return cell
     }

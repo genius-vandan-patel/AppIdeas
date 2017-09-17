@@ -14,7 +14,8 @@ struct IdeaStorage {
 }
 
 struct InnovatorStorage {
-    static var innovators = [String:Innovator]()
+    static var innovators = [String : Innovator]()
+    static var likedIdeas = [String: Any]()
 }
 
 struct CommentsStorage {
@@ -32,6 +33,7 @@ struct DataStorage {
     let innovatorRef = Database.database().reference().child(FIR.innovators)
     
     let myGroup = DispatchGroup()
+    let groupForLikes = DispatchGroup()
     
     //post idea to the firebase
     func postIdea(idea: Idea) {
@@ -56,7 +58,7 @@ struct DataStorage {
     }
     
     //creates user dictionary so we can have fullName of user based on the uid
-    func createInnovatorDicationary(completion: @escaping (Bool)->()) {
+    func createInnovatorDictionary(completion: @escaping (Bool)->()) {
         innovatorRef.observe(.value) { (snapshot) in
             InnovatorStorage.innovators.removeAll()
             let enumerator = snapshot.children
@@ -70,6 +72,23 @@ struct DataStorage {
                     InnovatorStorage.innovators[firInnovator.key] = innovator
                 }
             }
+            completion(true)
+        }
+    }
+    
+    //get liked ideas by innovator 
+    func getLikedIdeasByInnovator(for id: String, completion: @escaping (Bool)->()) {
+        innovatorRef.child(id).child("likedIdeas").observe(.value) { (snapshot) in
+            self.groupForLikes.enter()
+            InnovatorStorage.likedIdeas.removeAll()
+            let enumerator = snapshot.children
+            while let child = enumerator.nextObject() as? DataSnapshot {
+                InnovatorStorage.likedIdeas[child.key] = ""
+            }
+            self.groupForLikes.leave()
+        }
+        
+        groupForLikes.notify(queue: .main) {
             completion(true)
         }
     }
@@ -108,7 +127,15 @@ struct DataStorage {
         }
     }
     
-    func addLikeToIdea(withID id: String, andLikes likes: Int, completion: @escaping ()->()) {
+    func addLikedToInnovator(withInnovatorID id: String, andIdeaID ideaID: String, completion: @escaping ()->()) {
+        innovatorRef.child(id).child("likedIdeas").updateChildValues([ideaID: ""]) { (error, reference) in
+            if error == nil {
+                completion()
+            }
+        }
+    }
+    
+    func addLike(forIdea id: String, likes: Int, completion: @escaping ()->()) {
         ideasRef.child(id).child("likes").setValue(likes) { (error, reference) in
             if error == nil {
                 completion()
@@ -119,7 +146,7 @@ struct DataStorage {
     //get comment for given comment id
     func getComments(forCommentIDs IDs: [String], completion: @escaping ([Comment])->()) {
         for id in IDs {
-            myGroup.enter()
+            self.myGroup.enter()
             let query = commentsRef.queryOrderedByKey().queryEqual(toValue: id)
             query.observeSingleEvent(of: .value, with: { (snapshot) in
                 let enumerator = snapshot.children
@@ -133,7 +160,6 @@ struct DataStorage {
                         self.myGroup.leave()
                     }
                 }
-                
             })
         }
         

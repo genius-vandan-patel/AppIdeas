@@ -25,7 +25,6 @@ class HomeVC: UIViewController {
                         dataStorage.getLikedIdeasByInnovator(for: userID!, completion: { (success) in
                             if success {
                                 DispatchQueue.main.async {
-                                    print(InnovatorStorage.likedIdeas)
                                     self.tableView.reloadData()
                                 }
                             }
@@ -48,10 +47,15 @@ class HomeVC: UIViewController {
         if sender.currentImage == #imageLiteral(resourceName: "Like_Off") {
             likes = likes! + 1
             dataStorage.addLikedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: IdeaStorage.ideas[cellNumber].ideaID!) {
-                DispatchQueue.main.async {
-                    sender.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal)
-                }
+                dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: likes!, completion: {
+                })
             }
+        } else if sender.currentImage == #imageLiteral(resourceName: "Like_On") {
+            likes = likes! - 1
+            dataStorage.dislikeIdea(withID: IdeaStorage.ideas[cellNumber].ideaID!, completion: {
+                dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: likes!, completion: {
+                })
+            })
         }
     }
     
@@ -90,15 +94,15 @@ extension HomeVC: UITableViewDataSource {
         cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
         cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
         cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
-        if let likes = IdeaStorage.ideas[indexPath.row].likes {
-            cell.likesLabel.text = "\(likes)"
-        }
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
         cell.likeButton.tag = indexPath.row
         let isLikedIdea = InnovatorStorage.likedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
-        if isLikedIdea { cell.likeButton.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal) }
+        isLikedIdea ? cell.likeButton.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal) : cell.likeButton.setImage(#imageLiteral(resourceName: "Like_Off"), for: .normal)
         cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
+        if let likes = IdeaStorage.ideas[indexPath.row].likes {
+            cell.likesLabel.text = "\(likes)"
+        }
         return cell
     }
     

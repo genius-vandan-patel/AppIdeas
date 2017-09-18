@@ -135,6 +135,15 @@ struct DataStorage {
         }
     }
     
+    func dislikeIdea(withID id: String, completion: @escaping ()->()) {
+        let userID = Auth.auth().currentUser?.uid
+        innovatorRef.child(userID!).child("likedIdeas").child(id).removeValue { (error, reference) in
+            if error == nil {
+                completion()
+            }
+        }
+    }
+    
     func addLike(forIdea id: String, likes: Int, completion: @escaping ()->()) {
         ideasRef.child(id).child("likes").setValue(likes) { (error, reference) in
             if error == nil {

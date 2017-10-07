@@ -30,6 +30,7 @@ struct FIR {
 struct SEGUES {
     static let SignInToIdeasTabBar = "SignInToIdeasTabBar"
     static let HomeToComments = "FromHomeToComments"
+    static let YourIdeasToComments = "FromYourIdeasToComments"
 }
 
 struct Storyboard {

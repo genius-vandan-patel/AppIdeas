@@ -36,7 +36,7 @@ extension UIViewController {
         loadingView.addSubview(activityIndicator)
         container.addSubview(loadingView)
         view.addSubview(container)
-        activityIndicator.startAnimating()
+        activityIndicator.startAnimating() 
     }
     
     func hideActivityIndicator() {
@@ -60,6 +60,15 @@ extension UIViewController {
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10.0
         return loadingView
+    }
+    
+    func showTempAlert(withLabel label: UILabel, completion: @escaping ()->()) {
+        appIdeasAnimation.showView(label, withAnimation: true)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+            appIdeasAnimation.hideView(label, withAnimation: true, completion: {
+                completion()
+            })
+        }
     }
 }
 

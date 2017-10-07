@@ -11,6 +11,8 @@ import Firebase
 
 struct IdeaStorage {
     static var ideas = [Idea]()
+    static var yourIdeas = [Idea]()
+    static var yourIdeasIDs = [String]()
 }
 
 struct InnovatorStorage {
@@ -34,12 +36,16 @@ struct DataStorage {
     
     let myGroup = DispatchGroup()
     let groupForLikes = DispatchGroup()
+    let groupForUserIdeas = DispatchGroup()
     
     //post idea to the firebase
-    func postIdea(idea: Idea) {
+    func postIdea(idea: Idea, completion: @escaping ()->()) {
         let ideasRefWithID = Database.database().reference().child("ideas").childByAutoId()
         getCurrentInnovator().child("ideas").updateChildValues([ideasRefWithID.key: ""])
         ideasRefWithID.updateChildValues(idea.toDictionary())
+        ideasRefWithID.updateChildValues(idea.toDictionary()) { (error, _) in
+            if error == nil { completion() }
+        }
     }
     
     func postComment(comment: Comment, ideaID: String) {
@@ -89,6 +95,49 @@ struct DataStorage {
         }
         
         groupForLikes.notify(queue: .main) {
+            completion(true)
+        }
+    }
+    
+    //gets current user's ideas
+    func getIdeasForCurrentUser(completion: @escaping (Bool)->()) {
+        getCurrentInnovator().child("ideas").observe(.value) { (snapshot) in
+            IdeaStorage.yourIdeasIDs.removeAll()
+            IdeaStorage.yourIdeas.removeAll()
+            let enumerator = snapshot.children
+            while let idea = enumerator.nextObject() as? DataSnapshot {
+                IdeaStorage.yourIdeasIDs.append(idea.key)
+            }
+            self.getIdeas(forIdeaIDs: IdeaStorage.yourIdeasIDs, completion: { (success) in
+                if success {
+                    completion(true)
+                }
+            })
+        }
+    }
+    
+    func getIdeas(forIdeaIDs ids : [String], completion: @escaping (Bool)->()) {
+        for id in ids {
+            groupForUserIdeas.enter()
+            let query = ideasRef.queryOrderedByKey().queryEqual(toValue: id)
+            query.observeSingleEvent(of: .value, with: { (snapshot) in
+                let enumerator = snapshot.children
+                while let idea = enumerator.nextObject() as? DataSnapshot {
+                    if let dictionary = idea.value as? Dictionary<String, Any> {
+                        guard let description = dictionary["ideaDescription"] as? String, let innovatorID = dictionary["innovatorID"] as? String, let likes = dictionary["likes"] as? Int else {
+                            completion(false)
+                            return
+                        }
+                        let ideaObject = Idea(_ideaID: idea.key, _ideaDescription: description, _likes: likes, _comments: nil, _innovatorID: innovatorID)
+                        IdeaStorage.yourIdeas.append(ideaObject)
+                        self.groupForUserIdeas.leave()
+                    } else {
+                        completion(false)
+                    }
+                }
+            })
+        }
+        groupForUserIdeas.notify(queue: .main) {
             completion(true)
         }
     }

@@ -18,6 +18,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let userID = Auth.auth().currentUser?.uid
+        self.showActivityIndicator()
         dataStorage.getAllIdeas { (success) in
             if success {
                 dataStorage.createInnovatorDictionary(completion: { (success) in
@@ -25,6 +26,7 @@ class HomeVC: UIViewController {
                         dataStorage.getLikedIdeasByInnovator(for: userID!, completion: { (success) in
                             if success {
                                 DispatchQueue.main.async {
+                                    self.hideActivityIndicator()
                                     self.tableView.reloadData()
                                 }
                             }

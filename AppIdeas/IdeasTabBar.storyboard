@@ -26,10 +26,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U4Z-Md-ek8" customClass="CustomizedUITextView" customModule="AppIdeas" customModuleProvider="target">
-                                <rect key="frame" x="16" y="74" width="343" height="120"/>
+                                <rect key="frame" x="16" y="74" width="343" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="y1Q-oC-jgU"/>
+                                    <constraint firstAttribute="height" constant="50" id="y1Q-oC-jgU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-Bb-Upc" customClass="CustomizedButton" customModule="AppIdeas" customModuleProvider="target">
-                                <rect key="frame" x="16" y="209" width="343" height="40"/>
+                                <rect key="frame" x="16" y="144" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.37519541382789612" green="0.25191494822502136" blue="0.86281400918960571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WdV-5t-3Mh"/>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-P4-lOU">
-                                <rect key="frame" x="319" y="164" width="25" height="25"/>
+                                <rect key="frame" x="324" y="119" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="EjT-ZX-XeR"/>
                                     <constraint firstAttribute="height" constant="25" id="RjD-aB-ynO"/>
@@ -78,13 +78,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U4Z-Md-ek8" firstAttribute="trailing" secondItem="n62-Hi-mSq" secondAttribute="trailingMargin" id="1xv-m8-eQU"/>
-                            <constraint firstItem="Q8g-P4-lOU" firstAttribute="top" secondItem="OEb-w3-VUR" secondAttribute="top" constant="100" id="9jq-Vk-8Yn"/>
                             <constraint firstItem="U4Z-Md-ek8" firstAttribute="leading" secondItem="n62-Hi-mSq" secondAttribute="leadingMargin" id="C26-KE-Zwm"/>
                             <constraint firstItem="U4Z-Md-ek8" firstAttribute="top" secondItem="OEb-w3-VUR" secondAttribute="top" constant="10" id="FXz-P8-UYS"/>
                             <constraint firstItem="rUC-Bb-Upc" firstAttribute="trailing" secondItem="n62-Hi-mSq" secondAttribute="trailingMargin" id="O2x-MF-e3c"/>
                             <constraint firstItem="rUC-Bb-Upc" firstAttribute="leading" secondItem="n62-Hi-mSq" secondAttribute="leadingMargin" id="W8B-hv-Mjr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Q8g-P4-lOU" secondAttribute="trailing" constant="15" id="ZYB-lL-Zd0"/>
-                            <constraint firstItem="rUC-Bb-Upc" firstAttribute="top" secondItem="U4Z-Md-ek8" secondAttribute="bottom" constant="15" id="nph-2p-AhI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q8g-P4-lOU" secondAttribute="trailing" constant="10" id="ZYB-lL-Zd0"/>
+                            <constraint firstItem="rUC-Bb-Upc" firstAttribute="top" secondItem="U4Z-Md-ek8" secondAttribute="bottom" constant="20" id="nph-2p-AhI"/>
+                            <constraint firstItem="Q8g-P4-lOU" firstAttribute="top" secondItem="U4Z-Md-ek8" secondAttribute="bottom" constant="-5" id="oE1-gl-auk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OEb-w3-VUR"/>
                     </view>
@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="charactersCountLabel" destination="Q8g-P4-lOU" id="nFB-cM-Hne"/>
                         <outlet property="ideaTextView" destination="U4Z-Md-ek8" id="Dcj-tR-7Cr"/>
+                        <outlet property="ideaTextViewHeightConstraint" destination="y1Q-oC-jgU" id="k6k-eN-3vb"/>
                         <outlet property="letsGoButton" destination="rUC-Bb-Upc" id="oU2-Pi-UTs"/>
                     </connections>
                 </viewController>

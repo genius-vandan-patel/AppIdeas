@@ -98,7 +98,7 @@ struct DataStorage {
             completion(true)
         }
     }
-    
+        
     //gets current user's ideas
     func getIdeasForCurrentUser(completion: @escaping (Bool)->()) {
         getCurrentInnovator().child("ideas").observe(.value) { (snapshot) in

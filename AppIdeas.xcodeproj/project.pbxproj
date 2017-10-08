@@ -35,6 +35,7 @@
 		C68220121F2E4B7B00863A7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C68220111F2E4B7B00863A7E /* Assets.xcassets */; };
 		C68220151F2E4B7B00863A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C68220131F2E4B7B00863A7E /* LaunchScreen.storyboard */; };
 		C684AD351F49C17800C48184 /* CustomizedUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684AD341F49C17800C48184 /* CustomizedUITextView.swift */; };
+		C6B4B0FC1F8AB4F500F9A6EE /* YourFavorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B4B0FB1F8AB4F500F9A6EE /* YourFavorites.storyboard */; };
 		C6C32F5B1F7DDAF8000D5054 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C32F5A1F7DDAF8000D5054 /* Connectivity.swift */; };
 		C6DE7D311F5E1F860096C5CA /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE7D2F1F5E1F860096C5CA /* CommentsCell.swift */; };
 		C6DE7D321F5E1F860096C5CA /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6DE7D301F5E1F860096C5CA /* CommentsCell.xib */; };
@@ -77,6 +78,7 @@
 		C68220141F2E4B7B00863A7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C68220161F2E4B7B00863A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C684AD341F49C17800C48184 /* CustomizedUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedUITextView.swift; sourceTree = "<group>"; };
+		C6B4B0FB1F8AB4F500F9A6EE /* YourFavorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YourFavorites.storyboard; sourceTree = "<group>"; };
 		C6C32F5A1F7DDAF8000D5054 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		C6DE7D2F1F5E1F860096C5CA /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		C6DE7D301F5E1F860096C5CA /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				C682200E1F2E4B7B00863A7E /* SignInSignUp.storyboard */,
 				C62ADDFE1F37C6A40012CFC4 /* IdeasTabBar.storyboard */,
 				C676E9781F77479700E28A50 /* YourIdeas.storyboard */,
+				C6B4B0FB1F8AB4F500F9A6EE /* YourFavorites.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				C676E9791F77479700E28A50 /* YourIdeas.storyboard in Resources */,
 				C616F0C21F46797D0002429B /* IdeaCell.xib in Resources */,
 				C62ADDFF1F37C6A40012CFC4 /* IdeasTabBar.storyboard in Resources */,
+				C6B4B0FC1F8AB4F500F9A6EE /* YourFavorites.storyboard in Resources */,
 				C68220151F2E4B7B00863A7E /* LaunchScreen.storyboard in Resources */,
 				C6FF1DCC1F33A9C1008C8734 /* GoogleService-Info.plist in Resources */,
 				C68220121F2E4B7B00863A7E /* Assets.xcassets in Resources */,

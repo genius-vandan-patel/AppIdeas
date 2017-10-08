@@ -96,6 +96,7 @@ extension HomeVC: UITableViewDataSource {
         cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
         cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
         cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
+        cell.ideaTextViewHeight.constant = cell.ideaTextView.contentSize.height
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
         cell.likeButton.tag = indexPath.row
@@ -109,6 +110,11 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        guard let cell = Bundle.main.loadNibNamed("IdeaCell", owner: self, options: nil)?.first as? IdeaCell else {
+            return 0.0
+        }
+        cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
+        cell.ideaTextViewHeight.constant = cell.ideaTextView.contentSize.height
+        return cell.ideaTextViewHeight.constant + 140.0
     }
 }

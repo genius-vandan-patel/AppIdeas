@@ -36,6 +36,9 @@
 		C68220151F2E4B7B00863A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C68220131F2E4B7B00863A7E /* LaunchScreen.storyboard */; };
 		C684AD351F49C17800C48184 /* CustomizedUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684AD341F49C17800C48184 /* CustomizedUITextView.swift */; };
 		C6B4B0FC1F8AB4F500F9A6EE /* YourFavorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B4B0FB1F8AB4F500F9A6EE /* YourFavorites.storyboard */; };
+		C6B4B0FE1F8B3C9F00F9A6EE /* YourFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4B0FD1F8B3C9F00F9A6EE /* YourFavoritesVC.swift */; };
+		C6B4B1011F8B3DF400F9A6EE /* FavotireIdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4B0FF1F8B3DF400F9A6EE /* FavotireIdeaCell.swift */; };
+		C6B4B1021F8B3DF400F9A6EE /* FavotireIdeaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6B4B1001F8B3DF400F9A6EE /* FavotireIdeaCell.xib */; };
 		C6C32F5B1F7DDAF8000D5054 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C32F5A1F7DDAF8000D5054 /* Connectivity.swift */; };
 		C6DE7D311F5E1F860096C5CA /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE7D2F1F5E1F860096C5CA /* CommentsCell.swift */; };
 		C6DE7D321F5E1F860096C5CA /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6DE7D301F5E1F860096C5CA /* CommentsCell.xib */; };
@@ -79,6 +82,9 @@
 		C68220161F2E4B7B00863A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C684AD341F49C17800C48184 /* CustomizedUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedUITextView.swift; sourceTree = "<group>"; };
 		C6B4B0FB1F8AB4F500F9A6EE /* YourFavorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YourFavorites.storyboard; sourceTree = "<group>"; };
+		C6B4B0FD1F8B3C9F00F9A6EE /* YourFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourFavoritesVC.swift; sourceTree = "<group>"; };
+		C6B4B0FF1F8B3DF400F9A6EE /* FavotireIdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavotireIdeaCell.swift; sourceTree = "<group>"; };
+		C6B4B1001F8B3DF400F9A6EE /* FavotireIdeaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavotireIdeaCell.xib; sourceTree = "<group>"; };
 		C6C32F5A1F7DDAF8000D5054 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		C6DE7D2F1F5E1F860096C5CA /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		C6DE7D301F5E1F860096C5CA /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 				C60A23A11F5C6EEC00E63019 /* CommentsVC.swift */,
 				C676E97A1F775C3900E28A50 /* YourIdeasVC.swift */,
 				C676E9801F785DEE00E28A50 /* YourIdeasCommentsVC.swift */,
+				C6B4B0FD1F8B3C9F00F9A6EE /* YourFavoritesVC.swift */,
 			);
 			name = "Tab Bar Segues";
 			sourceTree = "<group>";
@@ -130,6 +137,8 @@
 				C6DE7D301F5E1F860096C5CA /* CommentsCell.xib */,
 				C676E97C1F775E5F00E28A50 /* YourIdeaCell.swift */,
 				C676E97D1F775E5F00E28A50 /* YourIdeaCell.xib */,
+				C6B4B0FF1F8B3DF400F9A6EE /* FavotireIdeaCell.swift */,
+				C6B4B1001F8B3DF400F9A6EE /* FavotireIdeaCell.xib */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 				C68220101F2E4B7B00863A7E /* SignInSignUp.storyboard in Resources */,
 				C676E97F1F775E5F00E28A50 /* YourIdeaCell.xib in Resources */,
 				C6DE7D321F5E1F860096C5CA /* CommentsCell.xib in Resources */,
+				C6B4B1021F8B3DF400F9A6EE /* FavotireIdeaCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +407,7 @@
 				C6FF1DCA1F32A557008C8734 /* SignUpVC.swift in Sources */,
 				C676E9771F7741E400E28A50 /* MoreTVC.swift in Sources */,
 				C67F437A1F2ED933004586AF /* CustomizedButton.swift in Sources */,
+				C6B4B0FE1F8B3C9F00F9A6EE /* YourFavoritesVC.swift in Sources */,
 				C6E479AB1F4B26A60055C0BA /* AddIdeaVC.swift in Sources */,
 				C62ADDD61F362E850012CFC4 /* DataStorage.swift in Sources */,
 				C6DE86DF1F489DE40080F800 /* CustomizedUIImageView.swift in Sources */,
@@ -412,6 +423,7 @@
 				C6DE7D311F5E1F860096C5CA /* CommentsCell.swift in Sources */,
 				C676E9811F785DEE00E28A50 /* YourIdeasCommentsVC.swift in Sources */,
 				C684AD351F49C17800C48184 /* CustomizedUITextView.swift in Sources */,
+				C6B4B1011F8B3DF400F9A6EE /* FavotireIdeaCell.swift in Sources */,
 				C60A23A21F5C6EEC00E63019 /* CommentsVC.swift in Sources */,
 				C67F437D1F2EDB1C004586AF /* AppIdeasAnimation.swift in Sources */,
 				C616F0C11F46797D0002429B /* IdeaCell.swift in Sources */,

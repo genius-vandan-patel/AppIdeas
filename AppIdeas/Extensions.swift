@@ -70,7 +70,29 @@ extension UIViewController {
             })
         }
     }
+    
+    func markUserLoggedIn() {
+        UserDefaults.standard.set(true, forKey: LogInLogOutKeys.isLoggedIn.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func markUserLoggedOut() {
+        UserDefaults.standard.set(false, forKey: LogInLogOutKeys.isLoggedIn.rawValue)
+        UserDefaults.standard.synchronize()
+    }
 }
+
+
+enum LogInLogOutKeys: String {
+    case isLoggedIn
+}
+
+extension UserDefaults {
+    class func isUserLoggedIn() -> Bool {
+        return standard.bool(forKey: LogInLogOutKeys.isLoggedIn.rawValue)
+    }
+}
+
 
 
 

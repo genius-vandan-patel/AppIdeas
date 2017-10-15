@@ -25,6 +25,7 @@ struct FIR {
     static let facebookName = "faceBookName"
     static let googleName = "googleName"
     static let google = "google"
+    static let favoritedIdeas = "favoritedIdeas"
 }
 
 struct SEGUES {

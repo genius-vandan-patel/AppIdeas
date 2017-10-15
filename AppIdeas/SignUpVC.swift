@@ -13,7 +13,7 @@ import Firebase
 let redForInvalidInput = UIColor(red: 255/255, green: 153/255, blue: 153/255, alpha: 1.0)
 let greenForValidInput = UIColor(red: 204/255, green: 255/255, blue: 153/255, alpha: 1.0)
 let ideaStorage = DataStorage.sharedInstance.databaseRef
-let okAction = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 let dataStorage = DataStorage.sharedInstance
 
 class SignUpVC: UIViewController {

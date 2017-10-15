@@ -25,10 +25,14 @@ class HomeVC: UIViewController {
                     if success {
                         dataStorage.getLikedIdeasByInnovator(for: userID!, completion: { (success) in
                             if success {
-                                DispatchQueue.main.async {
-                                    self.hideActivityIndicator()
-                                    self.tableView.reloadData()
-                                }
+                                dataStorage.getFavoritedIdeasByInnovator(for: userID!, completion: { (success) in
+                                    if success {
+                                        DispatchQueue.main.async {
+                                            self.hideActivityIndicator()
+                                            self.tableView.reloadData()
+                                        }
+                                    }
+                                })
                             }
                         })
                     }
@@ -40,6 +44,23 @@ class HomeVC: UIViewController {
     @objc func commentsImagePressed(gesture: UITapGestureRecognizer) {
         guard let cellNumber = gesture.view?.tag else { return }
         performSegue(withIdentifier: SEGUES.HomeToComments, sender: IdeaStorage.ideas[cellNumber].ideaID)
+    }
+    
+    @objc func favoriteImagePressed(gesture: UITapGestureRecognizer) {
+        guard let cellNumber = gesture.view?.tag else { return }
+        let idea = IdeaStorage.ideas[cellNumber]
+        if let imageView = gesture.view as? UIImageView {
+            imageView.isUserInteractionEnabled = false
+            if imageView.image == #imageLiteral(resourceName: "Favorite_On") {
+                dataStorage.addFavoritedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: idea.ideaID!, completion: {
+                    imageView.isUserInteractionEnabled = true
+                })
+            } else if imageView.image == #imageLiteral(resourceName: "Favorite_Off") {
+                dataStorage.removeFavoritedFromInnovator(withID: idea.ideaID!, completion: {
+                    imageView.isUserInteractionEnabled = true
+                })
+            }
+        }
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {
@@ -75,6 +96,12 @@ class HomeVC: UIViewController {
         tapGesture.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tapGesture)
     }
+    
+    func setupFavoriteImageGesture(imageView: UIImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(favoriteImagePressed(gesture:)))
+        tapGesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
+    }
 }
 
 extension HomeVC: UITableViewDelegate {}
@@ -99,9 +126,13 @@ extension HomeVC: UITableViewDataSource {
         cell.ideaTextViewHeight.constant = cell.ideaTextView.contentSize.height
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
+        self.setupFavoriteImageGesture(imageView: cell.favoriteImageView)
+        cell.favoriteImageView.tag = indexPath.row
         cell.likeButton.tag = indexPath.row
         let isLikedIdea = InnovatorStorage.likedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
         isLikedIdea ? cell.likeButton.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal) : cell.likeButton.setImage(#imageLiteral(resourceName: "Like_Off"), for: .normal)
+        let isFavoritedIdea = InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
+        cell.favoriteImageView.image = isFavoritedIdea ? #imageLiteral(resourceName: "Favorite_Off") : #imageLiteral(resourceName: "Favorite_On")
         cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
         if let likes = IdeaStorage.ideas[indexPath.row].likes {
             cell.likesLabel.text = "\(likes)"

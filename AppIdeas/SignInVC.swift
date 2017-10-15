@@ -99,6 +99,7 @@ class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 self?.showAlertMessage(withTitle: "ERROR", message: "Your Email Is Not Verified", actions: [okAction])
             } else {
                 self?.hideActivityIndicator()
+                self?.markUserLoggedIn()
                 self?.performSegue(withIdentifier: SEGUES.SignInToIdeasTabBar, sender: nil)
             }
         }
@@ -156,7 +157,7 @@ class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     func firebaseSignIn(withCredentials credentials: AuthCredential, completion: @escaping (User, Bool)->()) {
-        Auth.auth().signIn(with: credentials) { (user, error) in
+        Auth.auth().signIn(with: credentials) { [weak self] (user, error) in
             guard let user = user else { return }
             if error != nil {
                 print("Facebook LogIn With Firebase Failed : ", error?.localizedDescription as Any)
@@ -164,6 +165,7 @@ class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                 return
             }
             print("Firebase Log In Successful!")
+            self?.markUserLoggedIn()
             completion(user, true)
         }
     }

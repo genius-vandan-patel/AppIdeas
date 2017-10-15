@@ -244,7 +244,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNt-Po-BTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1208" y="-164"/>
+            <point key="canvasLocation" x="-1263" y="-88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DMl-el-7nz">
@@ -362,6 +362,23 @@
                                             <segue destination="2gA-lx-2sa" kind="show" id="PIM-6h-G8l"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="biV-lF-0mJ" style="IBUITableViewCellStyleDefault" id="u4k-My-1cK">
+                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u4k-My-1cK" id="tlx-f8-bgu">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="biV-lF-0mJ">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.77286219599999995" green="0.2411108464" blue="0.17652827500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -371,6 +388,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6kE-9E-sUO"/>
+                    <connections>
+                        <segue destination="IAM-dV-Fvn" kind="show" identifier="goToSignIn" id="6a1-6t-6am"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPi-t6-arT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,6 +411,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgS-FM-WrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1306" y="326"/>
+        </scene>
+        <!--SignInSignUp-->
+        <scene sceneID="WkE-bS-EOT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignInSignUp" id="IAM-dV-Fvn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rdg-6L-S1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="403"/>
         </scene>
     </scenes>
     <resources>

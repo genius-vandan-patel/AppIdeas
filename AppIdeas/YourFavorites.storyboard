@@ -9,16 +9,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Your FavoritesVC-->
         <scene sceneID="oqD-2R-5ly">
             <objects>
-                <viewController id="XkB-Ah-rqa" sceneMemberID="viewController">
+                <viewController id="XkB-Ah-rqa" customClass="YourFavoritesVC" customModule="AppIdeas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qgO-zR-D19">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pYR-gC-p8i">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XkB-Ah-rqa" id="Oka-pE-bHI"/>
+                                    <outlet property="delegate" destination="XkB-Ah-rqa" id="PPH-Jo-JbO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1nY-fU-den" firstAttribute="bottom" secondItem="pYR-gC-p8i" secondAttribute="bottom" id="5hC-Rz-ODw"/>
+                            <constraint firstItem="pYR-gC-p8i" firstAttribute="top" secondItem="1nY-fU-den" secondAttribute="top" id="6WT-VT-SQ1"/>
+                            <constraint firstItem="pYR-gC-p8i" firstAttribute="leading" secondItem="1nY-fU-den" secondAttribute="leading" id="fM1-g3-fnL"/>
+                            <constraint firstItem="1nY-fU-den" firstAttribute="trailing" secondItem="pYR-gC-p8i" secondAttribute="trailing" id="foU-c9-o5M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1nY-fU-den"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="pYR-gC-p8i" id="y5n-AQ-PTU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1P-tC-zr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

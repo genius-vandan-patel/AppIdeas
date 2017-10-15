@@ -9,11 +9,11 @@
 import Foundation
 
 struct Innovator {
-    var _fullName: String!
-    var _ideas: [String]?
-    var _comments: [String]?
-    var _likedIdeas: [String]?
-    var _innovatorID: String
+    private var _fullName: String!
+    private var _ideas: [String]?
+    private var _comments: [String]?
+    private var _likedIdeas: [String]?
+    private var _innovatorID: String
     
     var fullName: String! {
         get {
@@ -54,7 +54,7 @@ struct Innovator {
             _likedIdeas = newValue
         }
     }
-    
+        
     init(fullName: String, ideas: [String]?, comments: [String]?, innovatorID: String) {
         _fullName = fullName
         _ideas = ideas

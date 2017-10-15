@@ -17,22 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
-        checkAuthStatus()
+        checkLogInStatus()
         return true
     }
     
-    func checkAuthStatus() {
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            if user != nil {
-                let storyboard = UIStoryboard(name: "IdeasTabBar", bundle: Bundle.main)
-                self?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: Storyboard.tabBar)
-            } else {
-                let storyboard = UIStoryboard(name: "SignInSignUp", bundle: Bundle.main)
-                self?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: Storyboard.landingPage)
-            }
+    func checkLogInStatus() {
+        if UserDefaults.isUserLoggedIn() {
+            let storyboard = UIStoryboard(name: "IdeasTabBar", bundle: Bundle.main)
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: Storyboard.tabBar)
+        } else {
+            let storyboard = UIStoryboard(name: "SignInSignUp", bundle: Bundle.main)
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: Storyboard.landingPage)
         }
     }
     
@@ -66,7 +63,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
 }
 

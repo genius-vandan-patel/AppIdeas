@@ -24,7 +24,7 @@ class MoreTVC: UITableViewController {
     }
     
     func didTapLogout() {
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+        let deleteAction = UIAlertAction(title: "Logout", style: .destructive) { [weak self] (_) in
             self?.showActivityIndicator()
             do {
                 try Auth.auth().signOut()
@@ -35,6 +35,8 @@ class MoreTVC: UITableViewController {
                         if let landingVC = signInVC.presentingViewController {
                             landingVC.dismiss(animated: true, completion: {})
                         }
+                    } else {
+                        navigationController.tabBarController?.performSegue(withIdentifier: "toSignIn", sender: nil)
                     }
                 }
             } catch let signOutError {

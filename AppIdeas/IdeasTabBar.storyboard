@@ -240,11 +240,20 @@
                         <segue destination="eff-uU-j8S" kind="relationship" relationship="viewControllers" id="ngp-Lc-T1f"/>
                         <segue destination="0wU-HT-d3z" kind="relationship" relationship="viewControllers" id="2Dk-ZH-zaN"/>
                         <segue destination="YdN-TW-DRh" kind="relationship" relationship="viewControllers" id="rDf-zt-9ok"/>
+                        <segue destination="b5v-v6-gea" kind="presentation" identifier="toSignIn" id="Ydg-21-tQ8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNt-Po-BTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1263" y="-88"/>
+        </scene>
+        <!--SignInSignUp-->
+        <scene sceneID="5W8-ZV-ZhH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignInSignUp" id="b5v-v6-gea" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cKL-qW-GtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1594" y="454"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DMl-el-7nz">
@@ -388,9 +397,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6kE-9E-sUO"/>
-                    <connections>
-                        <segue destination="IAM-dV-Fvn" kind="show" identifier="goToSignIn" id="6a1-6t-6am"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPi-t6-arT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -411,14 +417,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgS-FM-WrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1306" y="326"/>
-        </scene>
-        <!--SignInSignUp-->
-        <scene sceneID="WkE-bS-EOT">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SignInSignUp" id="IAM-dV-Fvn" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rdg-6L-S1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1042" y="403"/>
         </scene>
     </scenes>
     <resources>

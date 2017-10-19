@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Spring.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,7 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>155505D474488EFB4247B4865DDABB47</key>
+		<key>34F349C8971A25C2BBA34AF501811E8E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B40D9F9CAFE14EA52C79CF5250E0B47</key>
 		<dict>
 			<key>primary</key>
 			<true/>

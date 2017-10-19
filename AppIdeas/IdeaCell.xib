@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +53,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xcz-FZ-chx">
                                         <rect key="frame" x="0.0" y="37.5" width="47.5" height="37.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-lV-uB9">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-lV-uB9" customClass="SpringButton" customModule="Spring">
                                                 <rect key="frame" x="0.0" y="0.0" width="33" height="37.5"/>
                                                 <state key="normal" image="Like_Off"/>
                                             </button>
@@ -105,7 +105,7 @@
                             <constraint firstAttribute="width" constant="30" id="NFy-O1-0lU"/>
                         </constraints>
                     </imageView>
-                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Favorite_On" translatesAutoresizingMaskIntoConstraints="NO" id="tWU-S5-5xK">
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Favorite_On" translatesAutoresizingMaskIntoConstraints="NO" id="tWU-S5-5xK" customClass="SpringImageView" customModule="Spring">
                         <rect key="frame" x="46" y="159" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Yzp-F6-MFs"/>
@@ -137,10 +137,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentsImage" destination="oqj-8k-Vzt" id="8se-Xm-dJT"/>
-                <outlet property="favoriteImageView" destination="tWU-S5-5xK" id="krR-tV-BJ6"/>
+                <outlet property="favoriteImageView" destination="tWU-S5-5xK" id="hH2-Zu-17D"/>
                 <outlet property="ideaTextView" destination="t5r-uU-DPF" id="1aK-to-3aD"/>
                 <outlet property="ideaTextViewHeight" destination="tyg-QM-mjO" id="qxd-6L-BUQ"/>
-                <outlet property="likeButton" destination="cYc-lV-uB9" id="trY-eY-vyV"/>
+                <outlet property="likeButton" destination="cYc-lV-uB9" id="EAw-dt-vNJ"/>
                 <outlet property="likesLabel" destination="teC-PY-1qy" id="Fe6-Mq-WQ3"/>
                 <outlet property="profilePicImageView" destination="K5g-zb-4rR" id="tYC-p2-2Oz"/>
                 <outlet property="usernameLabel" destination="I2G-lA-NGq" id="Wxr-CB-Qrd"/>

@@ -68,7 +68,7 @@ struct DataStorage {
     
     //creates user dictionary so we can have fullName of user based on the uid
     func createInnovatorDictionary(completion: @escaping (Bool)->()) {
-        innovatorRef.observe(.value) { (snapshot) in
+        innovatorRef.observeSingleEvent(of: .value) { (snapshot) in
             InnovatorStorage.innovators.removeAll()
             let enumerator = snapshot.children
             while let firInnovator = enumerator.nextObject() as? DataSnapshot {
@@ -87,7 +87,7 @@ struct DataStorage {
     
     //get liked ideas by innovator 
     func getLikedIdeasByInnovator(for id: String, completion: @escaping (Bool)->()) {
-        innovatorRef.child(id).child("likedIdeas").observe(.value) { (snapshot) in
+        innovatorRef.child(id).child("likedIdeas").observeSingleEvent(of: .value) { (snapshot) in
             self.groupForLikes.enter()
             InnovatorStorage.likedIdeas.removeAll()
             let enumerator = snapshot.children
@@ -96,7 +96,6 @@ struct DataStorage {
             }
             self.groupForLikes.leave()
         }
-        
         groupForLikes.notify(queue: .main) {
             completion(true)
         }
@@ -121,18 +120,13 @@ struct DataStorage {
     
     //get favorited ideas by innovator [To Do]
     func getFavoritedIdeasByInnovator(for id: String, completion: @escaping (Bool)->()) {
-        innovatorRef.child(id).child(FIR.favoritedIdeas).observe(.value) { (snapshot) in
-            self.groupForFavorites.enter()
+        innovatorRef.child(id).child(FIR.favoritedIdeas).observeSingleEvent(of: .value) { (snapshot) in
             InnovatorStorage.favoritedIdeas.removeAll()
             let enumerator = snapshot.children
             while let child = enumerator.nextObject() as? DataSnapshot {
                 InnovatorStorage.favoritedIdeas[child.key] = []
             }
-            self.groupForFavorites.leave()
-            
-            self.groupForFavorites.notify(queue: .main, execute: {
-                completion(true)
-            })
+            completion(true)
         }
     }
     
@@ -186,14 +180,14 @@ struct DataStorage {
         groupForUserIdeas.notify(queue: .main) {
             completion(true)
         }
-
+        
     }
     
     func getFavoriteIdeas(forIdeaIDs ids : [String], completion: @escaping (Bool)->()) {
         let userID = Auth.auth().currentUser?.uid
         for id in ids {
             let query = innovatorRef.child(userID!).child(FIR.favoritedIdeas).queryOrderedByKey().queryEqual(toValue: id)
-            query.observe(.value, with: { (snapshot) in
+            query.observeSingleEvent(of: .value, with: { (snapshot) in
                 self.groupForFavorites.enter()
                 let enumerator = snapshot.children
                 while let favIdeaID = enumerator.nextObject() as? DataSnapshot {
@@ -216,7 +210,7 @@ struct DataStorage {
     
     //gets all the ideas from Firebase
     func getAllIdeas(completion: @escaping (Bool)->()) {
-        ideasRef.observe(.value) { (snapshot) in
+        ideasRef.observeSingleEvent(of: .value) { (snapshot) in
             IdeaStorage.ideas.removeAll()
             let enumerator = snapshot.children
             while let idea = enumerator.nextObject() as? DataSnapshot {

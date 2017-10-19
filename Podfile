@@ -13,5 +13,6 @@ target 'AppIdeas' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift4'
 
 end

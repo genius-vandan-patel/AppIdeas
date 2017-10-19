@@ -62,6 +62,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Spring (1.0.3)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -71,6 +72,17 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift4`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift4
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: b65cb00a1adc7e810e2ad10b174b840b6d520ac3
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -88,7 +100,8 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 5c39a334ec0f4cd67e34bc6d9892af14ee6eedc1
+PODFILE CHECKSUM: e4b352b54e6bb331b56f8ae49cc10d7452c0ca79
 
 COCOAPODS: 1.2.1

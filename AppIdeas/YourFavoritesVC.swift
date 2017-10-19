@@ -21,13 +21,17 @@ class YourFavoritesVC: UIViewController {
         super.viewWillAppear(animated)
         favoriteIdeaIDs = Array(InnovatorStorage.favoritedIdeas.keys)
         self.showActivityIndicator()
-        dataStorage.getFavoriteIdeas(forIdeaIDs: favoriteIdeaIDs!) { [weak self] (success) in
-            DispatchQueue.main.async {
-                if success {
-                    self?.hideActivityIndicator()
-                    self?.tableView.reloadData()
+        if favoriteIdeaIDs?.count != 0 {
+            dataStorage.getFavoriteIdeas(forIdeaIDs: favoriteIdeaIDs!) { [weak self] (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        self?.hideActivityIndicator()
+                        self?.tableView.reloadData()
+                    }
                 }
             }
+        } else {
+            self.hideActivityIndicator()
         }
     }
     

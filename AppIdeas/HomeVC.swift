@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Spring
 
 class HomeVC: UIViewController {
     
@@ -17,6 +18,10 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let userID = Auth.auth().currentUser?.uid
         self.showActivityIndicator()
         dataStorage.getAllIdeas { (success) in
@@ -47,38 +52,88 @@ class HomeVC: UIViewController {
     }
     
     @objc func favoriteImagePressed(gesture: UITapGestureRecognizer) {
+        let favoriteImage = gesture.view as! SpringImageView
+        favoriteImage.animation = "pop"
+        favoriteImage.animate()
+        
+        favoriteImage.isUserInteractionEnabled = false
+        
         guard let cellNumber = gesture.view?.tag else { return }
-        let idea = IdeaStorage.ideas[cellNumber]
-        if let imageView = gesture.view as? UIImageView {
-            imageView.isUserInteractionEnabled = false
-            if imageView.image == #imageLiteral(resourceName: "Favorite_On") {
-                dataStorage.addFavoritedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: idea.ideaID!, completion: {
-                    imageView.isUserInteractionEnabled = true
-                })
-            } else if imageView.image == #imageLiteral(resourceName: "Favorite_Off") {
-                dataStorage.removeFavoritedFromInnovator(withID: idea.ideaID!, completion: {
-                    imageView.isUserInteractionEnabled = true
-                })
-            }
+        
+        let isFavoritedIdea = InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[cellNumber].ideaID!] != nil
+        
+        if !isFavoritedIdea {
+            InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[cellNumber].ideaID!] = ""
+            dataStorage.addFavoritedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: IdeaStorage.ideas[cellNumber].ideaID!, completion: {
+                DispatchQueue.main.async {
+                    favoriteImage.isUserInteractionEnabled = true
+                    self.tableView.reloadData()
+                }
+            })
+        } else {
+            InnovatorStorage.favoritedIdeas.removeValue(forKey: IdeaStorage.ideas[cellNumber].ideaID!)
+            dataStorage.removeFavoritedFromInnovator(withID: IdeaStorage.ideas[cellNumber].ideaID!, completion: {
+                DispatchQueue.main.async {
+                    favoriteImage.isUserInteractionEnabled = true
+                    self.tableView.reloadData()
+                }
+            })
+
         }
+        
+        //let idea = IdeaStorage.ideas[cellNumber]
+//        if let imageView = gesture.view as? UIImageView {
+//            imageView.isUserInteractionEnabled = false
+//            if imageView.image == #imageLiteral(resourceName: "Favorite_On") {
+//                dataStorage.addFavoritedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: idea.ideaID!, completion: {
+//                    DispatchQueue.main.async {
+//                        imageView.isUserInteractionEnabled = true
+//                    }
+//                })
+//            } else if imageView.image == #imageLiteral(resourceName: "Favorite_Off") {
+//                dataStorage.removeFavoritedFromInnovator(withID: idea.ideaID!, completion: {
+//                    DispatchQueue.main.async {
+//                        imageView.isUserInteractionEnabled = true
+//                    }
+//                })
+//            }
+//        }
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {
+        let button = sender as! SpringButton
+        button.animation = "morph"
+        button.animate()
+        
+        button.isEnabled = false
         let cellNumber = sender.tag
-        let idea = IdeaStorage.ideas[cellNumber]
-        var likes = idea.likes
-        if sender.currentImage == #imageLiteral(resourceName: "Like_Off") {
-            likes = likes! + 1
+        
+        let isLikedIdea = InnovatorStorage.likedIdeas[IdeaStorage.ideas[cellNumber].ideaID!] != nil
+        
+        if !isLikedIdea {
+            IdeaStorage.ideas[cellNumber].likes = IdeaStorage.ideas[cellNumber].likes + 1
+            InnovatorStorage.likedIdeas[IdeaStorage.ideas[cellNumber].ideaID!] = ""
             dataStorage.addLikedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: IdeaStorage.ideas[cellNumber].ideaID!) {
-                dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: likes!, completion: {
+                dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: IdeaStorage.ideas[cellNumber].likes, completion: {
+                    DispatchQueue.main.async {
+                        button.isEnabled = true
+                        self.tableView.reloadData()
+                    }
                 })
             }
-        } else if sender.currentImage == #imageLiteral(resourceName: "Like_On") {
-            likes = likes! - 1
-            dataStorage.dislikeIdea(withID: IdeaStorage.ideas[cellNumber].ideaID!, completion: {
-                dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: likes!, completion: {
+        } else {
+            if IdeaStorage.ideas[cellNumber].likes > 0 {
+                IdeaStorage.ideas[cellNumber].likes = IdeaStorage.ideas[cellNumber].likes - 1
+                InnovatorStorage.likedIdeas.removeValue(forKey: IdeaStorage.ideas[cellNumber].ideaID!)
+                dataStorage.dislikeIdea(withID: IdeaStorage.ideas[cellNumber].ideaID!, completion: {
+                    dataStorage.addLike(forIdea: IdeaStorage.ideas[cellNumber].ideaID!, likes: IdeaStorage.ideas[cellNumber].likes, completion: {
+                        DispatchQueue.main.async {
+                            button.isEnabled = true
+                            self.tableView.reloadData()
+                        }
+                    })
                 })
-            })
+            }
         }
     }
     

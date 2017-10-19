@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Spring
 
 class IdeaCell: UITableViewCell {
     
@@ -15,10 +16,11 @@ class IdeaCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var ideaTextView: CustomizedUITextView!
     @IBOutlet weak var commentsImage: UIImageView!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: SpringButton!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var ideaTextViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var favoriteImageView: SpringImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

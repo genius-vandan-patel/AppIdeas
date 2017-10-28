@@ -163,32 +163,15 @@ extension HomeVC: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.selectionStyle = .none
-        cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
-        cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
+        cell.configureIdeaCell(withIdea: IdeaStorage.ideas[indexPath.row], andInnovator: InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]!, likedIdea: InnovatorStorage.likedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil, favoriteIdea: InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil)
         
-        if let profilePicURL = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.profilePicURL {
-            let url = URL(string: profilePicURL)
-            cell.profilePicImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Background"), options: [.progressiveDownload, .continueInBackground], completed: { (image, error, _, _) in
-            })
-        }
-        
-        cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
-        cell.ideaTextViewHeight.constant = cell.ideaTextView.contentSize.height
+        //setting up gestures
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
         cell.commentsImage.tag = indexPath.row
         self.setupFavoriteImageGesture(imageView: cell.favoriteImageView)
         cell.favoriteImageView.tag = indexPath.row
         cell.likeButton.tag = indexPath.row
-        let isLikedIdea = InnovatorStorage.likedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
-        isLikedIdea ? cell.likeButton.setImage(#imageLiteral(resourceName: "Like_On"), for: .normal) : cell.likeButton.setImage(#imageLiteral(resourceName: "Like_Off"), for: .normal)
-        let isFavoritedIdea = InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
-        cell.favoriteImageView.image = isFavoritedIdea ? #imageLiteral(resourceName: "Favorite_Off") : #imageLiteral(resourceName: "Favorite_On")
         cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
-        
-        if let likes = IdeaStorage.ideas[indexPath.row].likes {
-            cell.likesLabel.text = "\(likes)"
-        }
         
         return cell
     }

@@ -43,7 +43,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5B1-Ja-jc0">
                                 <rect key="frame" x="85" y="0.0" width="155" height="75"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vandanpatel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-lA-NGq">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-lA-NGq">
                                         <rect key="frame" x="0.0" y="0.0" width="155" height="37.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.37519541379999999" green="0.25191494819999999" blue="0.86281400919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -78,7 +78,7 @@
                             <constraint firstAttribute="width" constant="240" id="wbL-Uv-ALf"/>
                         </constraints>
                     </stackView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I wish there was an App for App Ideas." translatesAutoresizingMaskIntoConstraints="NO" id="t5r-uU-DPF" customClass="CustomizedUITextView" customModule="AppIdeas" customModuleProvider="target">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I wish there was an App for" translatesAutoresizingMaskIntoConstraints="NO" id="t5r-uU-DPF" customClass="CustomizedUITextView" customModule="AppIdeas" customModuleProvider="target">
                         <rect key="frame" x="8" y="91" width="359" height="60"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

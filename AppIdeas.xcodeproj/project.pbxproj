@@ -20,6 +20,7 @@
 		C6559DA01F452F1D00A62CDC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559D9F1F452F1D00A62CDC /* HomeVC.swift */; };
 		C6559DA21F45468400A62CDC /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559DA11F45468400A62CDC /* Idea.swift */; };
 		C6559DA41F45481900A62CDC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559DA31F45481900A62CDC /* Comment.swift */; };
+		C65F2EB01F9C55D900F6469B /* ProfilePicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F2EAF1F9C55D900F6469B /* ProfilePicVC.swift */; };
 		C676E9771F7741E400E28A50 /* MoreTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676E9761F7741E400E28A50 /* MoreTVC.swift */; };
 		C676E9791F77479700E28A50 /* YourIdeas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C676E9781F77479700E28A50 /* YourIdeas.storyboard */; };
 		C676E97B1F775C3900E28A50 /* YourIdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676E97A1F775C3900E28A50 /* YourIdeasVC.swift */; };
@@ -64,6 +65,7 @@
 		C6559D9F1F452F1D00A62CDC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C6559DA11F45468400A62CDC /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 		C6559DA31F45481900A62CDC /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C65F2EAF1F9C55D900F6469B /* ProfilePicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicVC.swift; sourceTree = "<group>"; };
 		C676E9761F7741E400E28A50 /* MoreTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTVC.swift; sourceTree = "<group>"; };
 		C676E9781F77479700E28A50 /* YourIdeas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YourIdeas.storyboard; sourceTree = "<group>"; };
 		C676E97A1F775C3900E28A50 /* YourIdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourIdeasVC.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				C6559D9F1F452F1D00A62CDC /* HomeVC.swift */,
 				C6E479AA1F4B26A60055C0BA /* AddIdeaVC.swift */,
 				C676E9761F7741E400E28A50 /* MoreTVC.swift */,
+				C65F2EAF1F9C55D900F6469B /* ProfilePicVC.swift */,
 			);
 			name = "Tab Bar";
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				C6B4B1011F8B3DF400F9A6EE /* FavotireIdeaCell.swift in Sources */,
 				C60A23A21F5C6EEC00E63019 /* CommentsVC.swift in Sources */,
 				C67F437D1F2EDB1C004586AF /* AppIdeasAnimation.swift in Sources */,
+				C65F2EB01F9C55D900F6469B /* ProfilePicVC.swift in Sources */,
 				C616F0C11F46797D0002429B /* IdeaCell.swift in Sources */,
 				C682200B1F2E4B7B00863A7E /* AppDelegate.swift in Sources */,
 				C676E97B1F775C3900E28A50 /* YourIdeasVC.swift in Sources */,

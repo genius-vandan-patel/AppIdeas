@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 let activityIndicator = UIActivityIndicatorView()
 let container = UIView()
 let loadingView = UIView()

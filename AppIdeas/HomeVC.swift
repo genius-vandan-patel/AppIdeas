@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import Spring
+import ViewAnimator
+import SDWebImage
 
 class HomeVC: UIViewController {
     
@@ -18,6 +20,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,7 @@ class HomeVC: UIViewController {
                                         DispatchQueue.main.async {
                                             self.hideActivityIndicator()
                                             self.tableView.reloadData()
+                                            self.view.animateRandom()
                                         }
                                     }
                                 })
@@ -78,26 +82,8 @@ class HomeVC: UIViewController {
                     self.tableView.reloadData()
                 }
             })
-
+            
         }
-        
-        //let idea = IdeaStorage.ideas[cellNumber]
-//        if let imageView = gesture.view as? UIImageView {
-//            imageView.isUserInteractionEnabled = false
-//            if imageView.image == #imageLiteral(resourceName: "Favorite_On") {
-//                dataStorage.addFavoritedToInnovator(withInnovatorID: (Auth.auth().currentUser?.uid)!, andIdeaID: idea.ideaID!, completion: {
-//                    DispatchQueue.main.async {
-//                        imageView.isUserInteractionEnabled = true
-//                    }
-//                })
-//            } else if imageView.image == #imageLiteral(resourceName: "Favorite_Off") {
-//                dataStorage.removeFavoritedFromInnovator(withID: idea.ideaID!, completion: {
-//                    DispatchQueue.main.async {
-//                        imageView.isUserInteractionEnabled = true
-//                    }
-//                })
-//            }
-//        }
     }
     
     @objc func likeButtonPressed(_ sender: UIButton) {
@@ -171,12 +157,22 @@ extension HomeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = Bundle.main.loadNibNamed("IdeaCell", owner: self, options: nil)?.first as? IdeaCell else {
             print("Error Creating Cell For Idea")
             return UITableViewCell()
         }
+        
+        cell.selectionStyle = .none
         cell.profilePicImageView.image = #imageLiteral(resourceName: "Background")
         cell.usernameLabel.text = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.fullName
+        
+        if let profilePicURL = InnovatorStorage.innovators[IdeaStorage.ideas[indexPath.row].innovatorID]?.profilePicURL {
+            let url = URL(string: profilePicURL)
+            cell.profilePicImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Background"), options: [.progressiveDownload, .continueInBackground], completed: { (image, error, _, _) in
+            })
+        }
+        
         cell.ideaTextView.text = IdeaStorage.ideas[indexPath.row].ideaDescription
         cell.ideaTextViewHeight.constant = cell.ideaTextView.contentSize.height
         self.setupCommentsImageGesture(imageView: cell.commentsImage)
@@ -189,9 +185,11 @@ extension HomeVC: UITableViewDataSource {
         let isFavoritedIdea = InnovatorStorage.favoritedIdeas[IdeaStorage.ideas[indexPath.row].ideaID!] != nil
         cell.favoriteImageView.image = isFavoritedIdea ? #imageLiteral(resourceName: "Favorite_Off") : #imageLiteral(resourceName: "Favorite_On")
         cell.likeButton.addTarget(self, action: #selector(likeButtonPressed(_:)), for: .touchUpInside)
+        
         if let likes = IdeaStorage.ideas[indexPath.row].likes {
             cell.likesLabel.text = "\(likes)"
         }
+        
         return cell
     }
     

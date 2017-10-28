@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class YourFavoritesVC: UIViewController {
     
@@ -27,6 +28,7 @@ class YourFavoritesVC: UIViewController {
                     if success {
                         self?.hideActivityIndicator()
                         self?.tableView.reloadData()
+                        self?.view.animateRandom()
                     }
                 }
             }

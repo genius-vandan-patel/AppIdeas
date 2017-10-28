@@ -14,6 +14,7 @@ struct Innovator {
     private var _comments: [String]?
     private var _likedIdeas: [String]?
     private var _innovatorID: String
+    private var _profilePicURL : String?
     
     var fullName: String! {
         get {
@@ -54,18 +55,28 @@ struct Innovator {
             _likedIdeas = newValue
         }
     }
+    
+    var profilePicURL: String? {
+        get {
+           return _profilePicURL
+        } set {
+            _profilePicURL = newValue
+        }
+    }
         
-    init(fullName: String, ideas: [String]?, comments: [String]?, innovatorID: String) {
+    init(fullName: String, ideas: [String]?, comments: [String]?, innovatorID: String, profilePicURL: String?) {
         _fullName = fullName
         _ideas = ideas
         _comments = comments
         _innovatorID = innovatorID
+        _profilePicURL = profilePicURL
     }
     
     func toDictionary() -> Dictionary<String, Any> {
         return [
             "fullName": fullName,
-            "innovatorID": innovatorID
+            "innovatorID": innovatorID,
+            FIR.profilePicURL: profilePicURL ?? ""
         ]
     }
     

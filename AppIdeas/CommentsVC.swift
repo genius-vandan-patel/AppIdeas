@@ -24,6 +24,7 @@ class CommentsVC: UIViewController {
         showActivityIndicator()
         commentTextView.text = "Add Comment"
         commentTextView.textColor = UIColor.lightGray
+        commentTextView.delegate = self
         DataStorage.sharedInstance.getAllComments(forIdea: ideaID) { [weak self] (success) in
             if success! {
                 DispatchQueue.main.async {
@@ -47,7 +48,7 @@ class CommentsVC: UIViewController {
     }
 }
 
-extension CommentsVC: UITableViewDataSource {
+extension CommentsVC: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -71,5 +72,15 @@ extension CommentsVC: UITableViewDataSource {
     }
 }
 
-extension CommentsVC: UITableViewDelegate {
+extension CommentsVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
 }
+
+
+
+
+
+
+

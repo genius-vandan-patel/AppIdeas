@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class AddIdeaVC: UIViewController {
     
@@ -23,6 +24,11 @@ class AddIdeaVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         ideaTextView.setContentOffset(.zero, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.animateRandom()
     }
     
     @IBAction func letsGoTapped(_ sender: CustomizedButton) {

@@ -73,11 +73,11 @@ struct DataStorage {
             let enumerator = snapshot.children
             while let firInnovator = enumerator.nextObject() as? DataSnapshot {
                 if let dictionary = firInnovator.value as? Dictionary<String, Any> {
-                    guard let fullName = dictionary[FIR.fullName] as? String else {
+                    guard let fullName = dictionary[FIR.fullName] as? String, let profilePicURL = dictionary[FIR.profilePicURL] as? String else {
                         completion(false)
                         return
                     }
-                    let innovator = Innovator(fullName: fullName, ideas: nil, comments: nil, innovatorID: "")
+                    let innovator = Innovator(fullName: fullName, ideas: nil, comments: nil, innovatorID: "", profilePicURL: profilePicURL)
                     InnovatorStorage.innovators[firInnovator.key] = innovator
                 }
             }
@@ -310,4 +310,17 @@ struct DataStorage {
             completion(CommentsStorage.comments)
         }
     }
+    
+    //upload profile pic URL to firebase
+    func uploadProfilePicURLToFirebase(_ userID: String, picURL: String, completion: @escaping ()->()) {
+        ideaStorage.child(FIR.innovators).child(userID).child(FIR.profilePicURL).setValue(picURL) { (error, _) in
+            if error == nil {
+                completion()
+            }
+        }
+    }
+    
+    func removeProfilePicURLFromFirebase(_ userID: String, completion: @escaping ()->()) {
+    }
+    
 }

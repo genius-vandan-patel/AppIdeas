@@ -8,13 +8,19 @@
 
 import UIKit
 import Firebase
+import ViewAnimator
 
 class MoreTVC: UITableViewController {
     
-    let logOutCellNuber = 2
+    let logOutCellNuber = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        view.animateRandom()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,6 +49,9 @@ class MoreTVC: UITableViewController {
                 print("Error signing out : ", signOutError.localizedDescription)
             }
         }
-        showAlertMessage(withTitle: "Logout", message: "Are you sure about logging out?", actions: [deleteAction, okAction])
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) in }
+        
+        showAlertMessage(withTitle: "Logout", message: "Are you sure about logging out?", actions: [deleteAction, cancelAction])
     }
 }

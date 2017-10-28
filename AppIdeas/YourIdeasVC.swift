@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class YourIdeasVC: UIViewController {
 
@@ -21,6 +22,7 @@ class YourIdeasVC: UIViewController {
             if success {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
+                    self?.view.animateRandom()
                 }
             }
         }

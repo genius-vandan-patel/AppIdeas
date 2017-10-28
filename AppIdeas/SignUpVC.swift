@@ -73,7 +73,7 @@ class SignUpVC: UIViewController {
                 Timer.scheduledTimer(timeInterval: TimeInterval.init(2.0), target: self!, selector: #selector(self?.hideEmailVerificationLabel), userInfo: nil, repeats: false)
             })
             
-            let innovator = Innovator(fullName: fullName, ideas: nil, comments: nil, innovatorID: user.uid)
+            let innovator = Innovator(fullName: fullName, ideas: nil, comments: nil, innovatorID: user.uid, profilePicURL: "")
             
             //store user's full name into the database whenever user is created successfully
             ideaStorage.child(FIR.innovators).child(user.uid).setValue(innovator.toDictionary(), withCompletionBlock: { (error, reference) in

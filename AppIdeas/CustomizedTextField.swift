@@ -79,6 +79,6 @@ class CustomizedTextField: UITextField {
     
     func validatePassword(_ password: String) {
         //Firebase only validates length of the password
-        backgroundColor = password.characters.count < 6 ? redForInvalidInput : greenForValidInput
+        backgroundColor = password.count < 6 ? redForInvalidInput : greenForValidInput
     }
 }

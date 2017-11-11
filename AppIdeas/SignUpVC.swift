@@ -48,7 +48,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: CustomizedButton) {
         showActivityIndicator()
-        guard let email = emailOrPhoneTextField.text, let password = passwordTextField.text ,let fullName = fullNameTextField.text, let username = userNameTextField.text else {
+        guard let email = emailOrPhoneTextField.text, let password = passwordTextField.text ,let fullName = fullNameTextField.text, let _ = userNameTextField.text else {
             hideActivityIndicator()
             return
         }

@@ -20,7 +20,9 @@ class MoreTVC: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.animateRandom()
+        if isBeingPresented {
+            view.animateRandom()
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

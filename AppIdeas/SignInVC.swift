@@ -52,7 +52,7 @@ class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         let fullName = user.profile.name
         firebaseSignIn(withCredentials: googleCredentials) { [weak self] (user, success) in
             if success {
-                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.fullName: fullName, FIR.authMethod: FIR.google], withCompletionBlock: { (error, reference) in
+                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.fullName: fullName, FIR.authMethod: FIR.google, FIR.profilePicURL: ""], withCompletionBlock: { (error, reference) in
                     self?.hideActivityIndicator()
                     if error != nil {
                         print("Error uploading google information to Firebase : ", error?.localizedDescription as Any)
@@ -128,7 +128,7 @@ class SignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                         let facebookCredentials = FacebookAuthProvider.credential(withAccessToken: facebookTokenString)
                         self?.firebaseSignIn(withCredentials: facebookCredentials, completion: { (user, success) in
                             if success {
-                                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.fullName: result["name"], FIR.authMethod: FIR.facebook], withCompletionBlock: { (error, reference) in
+                                ideaStorage.child(FIR.innovators).child(user.uid).setValue([FIR.fullName: result["name"], FIR.authMethod: FIR.facebook, FIR.profilePicURL: ""], withCompletionBlock: { (error, reference) in
                                     self?.hideActivityIndicator()
                                     if error != nil {
                                         print("Error uploading information to Firebase Database : ", error?.localizedDescription as Any)

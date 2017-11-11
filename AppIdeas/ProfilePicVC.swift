@@ -27,21 +27,21 @@ class ProfilePicVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if InnovatorStorage.innovators[userID!]?.profilePicURL != nil {
-            profilePicImageView.image = UIImage()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if imageData == nil {
-            if let profilePicURL = InnovatorStorage.innovators[userID!]?.profilePicURL {
+            let profilePicURL = InnovatorStorage.innovators[userID!]?.profilePicURL
+            if let profilePicURL = profilePicURL, !profilePicURL.isEmpty {
                 let url = URL(string: profilePicURL)
                 profilePicImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Profile_Pic"), options: [.progressiveDownload, .continueInBackground], completed: { (image, error, _ , _) in
                     self.adjustRightBarButtonItem()
                 })
+            } else {
+                profilePicImageView.image = #imageLiteral(resourceName: "Profile_Pic")
             }
         }
+    }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func adjustRightBarButtonItem() {
@@ -59,7 +59,7 @@ class ProfilePicVC: UIViewController {
     }
     
     @objc func didTapProfilePic() {
-        present(imagePicker, animated: true, completion: nil)
+        presentActionSheet()
     }
     
     func uploadImageToFirebaseStorage(data: Data, completion: @escaping (Bool)->()) {
@@ -86,8 +86,23 @@ class ProfilePicVC: UIViewController {
         }
     }
     
+    func removeImageFromFirebaseStorage(completion: @escaping (Bool)->()) {
+        let profilePicURL = InnovatorStorage.innovators[userID!]?.profilePicURL
+        if !(profilePicURL?.isEmpty)! {
+            let storageRef = Storage.storage().reference(forURL: profilePicURL!)
+            storageRef.delete { [weak self] (error) in
+                if error == nil {
+                    dataStorage.removeProfilePicURLFromFirebase((self?.userID)!, completion: {
+                        InnovatorStorage.innovators[(self?.userID)!]?.profilePicURL = ""
+                        self?.profilePicImageView.image = #imageLiteral(resourceName: "Profile_Pic")
+                    })
+                }
+            }
+        }
+    }
+    
     @objc func didTapAdd(_ sender: UIButton) {
-        present(imagePicker, animated: true, completion: nil)
+        presentActionSheet()
     }
     
     @objc func didTapEdit(_ sender: UIButton) {
@@ -112,9 +127,8 @@ class ProfilePicVC: UIViewController {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let deleteAction = UIAlertAction(title: "Delete Photo", style: .destructive) { (_) in
-            InnovatorStorage.innovators[self.userID!]?.profilePicURL = nil
-            //make firebase call for this action
+        let deleteAction = UIAlertAction(title: "Delete Photo", style: .destructive) { [weak self] (_) in
+            self?.removeImageFromFirebaseStorage(completion: { (_) in })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
         }

@@ -81,6 +81,7 @@ struct DataStorage {
                     InnovatorStorage.innovators[firInnovator.key] = innovator
                 }
             }
+            print(InnovatorStorage.innovators)
             completion(true)
         }
     }
@@ -321,6 +322,11 @@ struct DataStorage {
     }
     
     func removeProfilePicURLFromFirebase(_ userID: String, completion: @escaping ()->()) {
+        ideaStorage.child(FIR.innovators).child(userID).child(FIR.profilePicURL).setValue("") { (error, _) in
+            if error == nil {
+                completion()
+            }
+        }
     }
     
 }

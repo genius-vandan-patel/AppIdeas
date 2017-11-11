@@ -79,6 +79,10 @@ extension UIViewController {
         UserDefaults.standard.set(false, forKey: LogInLogOutKeys.isLoggedIn.rawValue)
         UserDefaults.standard.synchronize()
     }
+    
+    func sizeClass() -> (UIUserInterfaceSizeClass, UIUserInterfaceSizeClass) {
+        return (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass)
+    }
 }
 
 
@@ -91,6 +95,7 @@ extension UserDefaults {
         return standard.bool(forKey: LogInLogOutKeys.isLoggedIn.rawValue)
     }
 }
+
 
 
 
